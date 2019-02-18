@@ -1,2 +1,2 @@
 100
-['Shougo/dein.vim', 'Shougo/neocomplete.vim', 'Shougo/neosnippet', 'Shougo/neosnippet-snippets', 'Shougo/unite.vim', 'Shougo/vimfiler.vim', 'Shougo/vimshell.vim', 'Townk/vim-autoclose', 'itchyny/lightline.vim', 'nathanaelkane/vim-indent-guides', 'scrooloose/nerdcommenter', 'scrooloose/nerdtree', 'scrooloose/syntastic', 'tpope/vim-fugitive', 'tyru/caw.vim']
+['Shougo/dein.vim', 'Shougo/neocomplete.vim', 'Shougo/neosnippet', 'Shougo/neosnippet-snippets', 'Shougo/unite.vim', 'Shougo/vimfiler.vim', 'Shougo/vimshell.vim', 'Townk/vim-autoclose', 'itchyny/lightline.vim', 'nathanaelkane/vim-indent-guides', 'othree/yajs.vim', 'scrooloose/nerdcommenter', 'scrooloose/nerdtree', 'scrooloose/syntastic', 'tpope/vim-fugitive', 'tyru/caw.vim']

@@ -2,7 +2,7 @@ echo "Setting up your Mac..."
 
 # Check for Homebrew and install if we don't have it
 if test ! $(which brew); then
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Update Homebrew recipes
@@ -13,10 +13,13 @@ brew tap homebrew/bundle
 brew bundle
 
 # Make ZSH the default shell environment
-chsh -s $(which zsh)
+chsh -s /ust/local/bin/zsh
 # remove current .zshrc
 rm -rf $HOME/.zshrc
-
+# download zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+# install zplug
+zplug install
 DOT_DIRECTORY=$HOME/dotfiles
 echo "DOT_DIRECTORY = "$DOT_DIRECTORY
 for f in .??*

@@ -23,7 +23,8 @@ endif
 	" filetype plugin indent on
 
 	filetype plugin indent on 
-	syntax on
+	syntax enable
+	autocmd ColorScheme * highlight javascriptVariable ctermfg=22 guifg=#008800
 	" If you want to install not installed plugins on startup
 
 	if has('vim_starting') && dein#check_install()
@@ -180,6 +181,15 @@ endfunction
 	nnoremap s <Nop>
 	nnoremap ss :<C-u>sp<CR>
 	nnoremap sv :<C-u>vs<CR>
+	nnoremap sh <C-w>h
+	nnoremap sj <C-w>j
+	nnoremap sk <C-w>k
+	nnoremap sl <C-w>l
+	nnoremap s> <C-w>>
+	nnoremap s< <C-w><
+	nnoremap <Leader>t :<C-u>tabnew<CR>
+	nnoremap <Leader>l gt 
+	nnoremap <Leader>h gT 
 	nnoremap <CR> i<CR><ESC>:<C-u>w<CR>
 	nnoremap <Leader>s :<C-u>w<CR>
 	nnoremap <Leader>w :<C-u>wq<CR>
@@ -200,8 +210,7 @@ endfunction
 	nmap <Leader>/ <Plug>NERDCommenterToggle:<C-u>w<CR>
 	vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
 	nnoremap <Space>g :vim <C-r><C-w> %<CR>
-	nnoremap N :cprevious<CR>
-	nnoremap n :cnext<CR>
+	
 	" ----others----
 	set fileencoding=utf-8
 	set fileencodings=ucs-boms,utf-8,euc-jp,cp932
@@ -222,10 +231,10 @@ endfunction
 	set backspace=2
 
 	" background theme
-	colorscheme gruvbox
-	let g:gruvbox_contrast = 'hard'
-	highlight StatusLine ctermfg=darkblue
-	highlight StatusLine ctermbg=black
+	colorscheme dracula
+	" let g:gruvbox_contrast = 'hard'
+	" highlight StatusLine ctermfg=darkblue
+	" highlight StatusLine ctermbg=black
 	set t_Co=256
 
 	" background transparent
@@ -249,5 +258,45 @@ endfunction
 	set lines=800
 	set columns=100
 
+
+	
 	" hi MatchParen cterm=bold ctermbg=239 ctermfg=177
 	" hi Search ctermbg=177 ctermfg=239
+	function! s:get_syn_id(transparent)
+		let synid = synID(line("."), col("."), 1)
+		if a:transparent
+			return synIDtrans(synid)
+		else
+			return synid
+		endif
+	endfunction
+	function! s:get_syn_attr(synid)
+		let name = synIDattr(a:synid, "name")
+		let ctermfg = synIDattr(a:synid, "fg", "cterm")
+		let ctermbg = synIDattr(a:synid, "bg", "cterm")
+		let guifg = synIDattr(a:synid, "fg", "gui")
+		let guibg = synIDattr(a:synid, "bg", "gui")
+		return {
+					\ "name": name,
+					\ "ctermfg": ctermfg,
+					\ "ctermbg": ctermbg,
+					\ "guifg": guifg,
+					\ "guibg": guibg}
+	endfunction
+	function! s:get_syn_info()
+		let baseSyn = s:get_syn_attr(s:get_syn_id(0))
+		echo "name: " . baseSyn.name .
+					\ " ctermfg: " . baseSyn.ctermfg .
+					\ " ctermbg: " . baseSyn.ctermbg .
+					\ " guifg: " . baseSyn.guifg .
+					\ " guibg: " . baseSyn.guibg
+		let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
+		echo "link to"
+		echo "name: " . linkedSyn.name .
+					\ " ctermfg: " . linkedSyn.ctermfg .
+					\ " ctermbg: " . linkedSyn.ctermbg .
+					\ " guifg: " . linkedSyn.guifg .
+					\ " guibg: " . linkedSyn.guibg
+	endfunction
+	command! SyntaxInfo call s:get_syn_info()
+
