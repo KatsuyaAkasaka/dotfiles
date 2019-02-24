@@ -215,7 +215,7 @@ nnoremap <Leader>h gT
 nnoremap <CR> i<CR><ESC>:<C-u>w<CR>
 nnoremap <Leader>s :<C-u>w<CR>
 nnoremap <Leader>w :<C-u>wq<CR>
-nnoremap <Leader>q :<C-u>q<CR>
+nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <Leader><Leader> <S-g><S-v>gg=:<C-u>w<CR>
 nnoremap <TAB> I<TAB><ESC>:<C-u>w<CR>
 inoremap <silent> jj <ESC>:<C-u>w<CR>
