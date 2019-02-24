@@ -1,5 +1,6 @@
 HERE=$HOME/dotfiles/vim
 
+mkdir $HOME/.vim
 echo "changing vim theme..."
 COLOR=$HERE/colors
 SETCOLOR=$HOME/.vim/colors
