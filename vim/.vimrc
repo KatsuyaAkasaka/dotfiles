@@ -40,6 +40,20 @@ endif
 
 filetype plugin indent on 
 syntax enable
+" ----gitguitter----
+let g:gitgutter_enabled = 1
+set signcolumn=yes
+highlight signcolumn ctermbg=cyan
+set updatetime=1000
+let g:gitgutter_sign_added = '.'
+let g:gitgutter_sign_modified = '.'
+let g:gitgutter_sign_removed = '.'
+let g:gitgutter_sign_removed_first_line = '.'
+let g:gitgutter_sign_modified_removed = '.'
+highlight GitGutterAdd ctermfg=green guifg=darkgreen
+highlight GitGutterChange ctermfg=yellow guifg=darkyellow
+highlight GitGutterDelete ctermfg=red guifg=darkred
+highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
 " ----nerdtree----
 let g:NERDTreeDirArrows = 1
@@ -263,13 +277,16 @@ set laststatus=2
 set autoread
 
 " change cursor shape
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
 set lines=800
 set columns=100
 
-
+set mouse=a
 
 " hi MatchParen cterm=bold ctermbg=239 ctermfg=177
 " hi Search ctermbg=177 ctermfg=239

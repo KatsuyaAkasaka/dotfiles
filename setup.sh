@@ -9,5 +9,7 @@ echo "Setting vim..."
 $DOT_DIRECTORY/vim/set.sh
 echo "Setting Alacritty"
 $DOT_DIRECTORY/alacritty/set.sh
+echo "Setting tmux"
+$DOT_DIRECTORY/tmux/set.sh
 
 echo "Finished!! Let's go!!"

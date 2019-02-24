@@ -3,6 +3,7 @@ prompt pure
 
 # path 
 export LANG="en_US.UTF-8"
+export TERM="xterm-256color"
 export RBPATH="$HOME/.rbenv/bin"
 export PYPATH="$HOME/.pyenv/bin"
 export GOENV_ROOT="$HOME/.goenv"
@@ -60,6 +61,7 @@ alias up='cd ..'
 alias mv='mv -i'
 alias cp='cp -i'
 alias cdr='cd-gitroot'
+alias cd='cdls'
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f '/Users/sakas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/path.zsh.inc'; 
@@ -89,3 +91,12 @@ function readlink() {
 	RESULT=$PHYS_DIR/$TARGET_FILE
 	echo $RESULT
 }
+
+function cdls() {
+  # cdがaliasでループするので\をつける
+  \cd "$@" && ls
+}
+
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

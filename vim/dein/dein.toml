@@ -22,3 +22,5 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 
+[[plugins]]
+repo = 'junegunn/fzf.vim'
