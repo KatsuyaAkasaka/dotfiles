@@ -1,3 +1,3 @@
 # dotfiles
 just do
-`./setup.sh`
+`cd && git clone git://github.com/KatsuyaAkasaka/dotfiles.git && ./setup.sh`
