@@ -1,3 +1,6 @@
+autoload -U promptinit; promptinit
+prompt pure
+
 # path 
 export LANG="en_US.UTF-8"
 export RBPATH="$HOME/.rbenv/bin"
@@ -27,6 +30,7 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "mollifier/cd-gitroot"
 zplug "b4b4r07/enhancd", use:enhancd.sh
+zplug mafredri/zsh-async, from:github
 zplug "sindresorhus/pure"
 zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug "chrissicool/zsh-256color"
