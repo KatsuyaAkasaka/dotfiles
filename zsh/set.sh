@@ -10,7 +10,7 @@ fi
 brew update
 
 # Install zsh
-# brew bundle
+brew bundle
 
 echo "change default shell \"zsh\"..."
 # Make ZSH the default shell environment
