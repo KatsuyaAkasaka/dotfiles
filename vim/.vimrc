@@ -1,6 +1,12 @@
 if &compatible
 	set nocompatible               " Be iMproved
 endif
+" If installed using Homebrew
+set rtp+=/usr/local/opt/fzf
+
+" If installed using git
+set rtp+=~/.fzf
+
 " ----------dein----------
 
 " プラグインが実際にインストールされるディレクトリ
@@ -54,6 +60,9 @@ highlight GitGutterAdd ctermfg=green guifg=darkgreen
 highlight GitGutterChange ctermfg=yellow guifg=darkyellow
 highlight GitGutterDelete ctermfg=red guifg=darkred
 highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
+"----ack----
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 
 " ----nerdtree----
 let g:NERDTreeDirArrows = 1

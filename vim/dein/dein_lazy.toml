@@ -25,3 +25,15 @@ on_ft = ['javascript']
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+
+# fzf-bin にホスティングされているので注意
+# またファイル名が fzf-bin となっているので file:fzf としてリネームする
+[[plugins]] 
+repo = 'junegunn/fzf' # "junegunn/fzf", as:command, file:fzf 
+
+# ついでに tmux 用の拡張も入れるといい
+# [[plugins]]
+# repo = "junegunn/fzf", as:command, of:bin/fzf-tmux
+
+[[plugins]]
+repo = "mileszs/ack.vim"
