@@ -46,6 +46,13 @@ endif
 
 filetype plugin indent on 
 syntax enable
+" ----vimgo----
+let g:go_hightlight_functions = 1
+let g:go_hightlight_methods = 1
+let g:go_hightlight_structs = 1
+let g:go_hightlight_interfaces = 1
+let g:go_hightlight_operators = 1
+let g:go_hightlight_build_constraints = 1
 " ----gitguitter----
 let g:gitgutter_enabled = 1
 set signcolumn=yes
@@ -70,7 +77,12 @@ let g:NERDTreeDirArrows = 1
 " let g:NERDTreeDirArrowCollapsible = ''
 let NERDTreeShowHidden=1
 
-" ----cawvim----
+" ----fzf----
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
 
 " ----nerdcommenter----
 let g:NERDCreateDefaultMappings = 0
@@ -221,13 +233,12 @@ nnoremap s< <C-w><
 nnoremap <Leader>t :<C-u>tabnew<CR>
 nnoremap <Leader>l gt 
 nnoremap <Leader>h gT 
-nnoremap <CR> i<CR><ESC>:<C-u>w<CR>
+nnoremap <CR> i<CR><ESC>
 nnoremap <Leader>s :<C-u>w<CR>
 nnoremap <Leader>w :<C-u>wq<CR>
 nnoremap <Leader>q :<C-u>q!<CR>
-nnoremap <Leader><Leader> <S-g><S-v>gg=:<C-u>w<CR>
-nnoremap <TAB> I<TAB><ESC>:<C-u>w<CR>
-inoremap <silent> jj <ESC>:<C-u>w<CR>
+nnoremap <TAB> I<TAB><ESC>
+inoremap <silent> jj <ESC>
 nnoremap j gj
 nnoremap k gk
 nnoremap gj j
@@ -240,7 +251,10 @@ noremap <S-l> $
 nnoremap <silent> <C-e> :NERDTreeToggle<CR>
 nmap <Leader>/ <Plug>NERDCommenterToggle:<C-u>w<CR>
 vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
-nnoremap <Space>g :vim <C-r><C-w> %<CR>
+nnoremap <Leader>p :Files <CR>
+nnoremap <Leader>g :GFiles? <CR>
+nnoremap <Leader><S-f> :Ag <CR>
+
 
 " ----others----
 set fileencoding=utf-8

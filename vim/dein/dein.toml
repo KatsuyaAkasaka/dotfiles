@@ -22,3 +22,12 @@ repo = 'tyru/caw.vim'
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --bin'
+merged = '0'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = 'fzf'
+
