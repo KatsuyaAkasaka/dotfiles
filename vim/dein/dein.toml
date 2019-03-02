@@ -24,10 +24,8 @@ repo = 'scrooloose/nerdcommenter'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install --bin'
-merged = '0'
+build = './install --all'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
-depends = 'fzf'
-
+depends = ['fzf']

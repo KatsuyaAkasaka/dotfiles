@@ -1,11 +1,6 @@
 if &compatible
-	set nocompatible               " Be iMproved
+	set nocompatible
 endif
-" If installed using Homebrew
-set rtp+=/usr/local/opt/fzf
-
-" If installed using git
-set rtp+=~/.fzf
 
 " ----------dein----------
 
@@ -46,6 +41,14 @@ endif
 
 filetype plugin indent on 
 syntax enable
+" ----ag----
+command! -bang -nargs=? -complete=dir Ag
+	\ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%'), <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+
 " ----vimgo----
 let g:go_hightlight_functions = 1
 let g:go_hightlight_methods = 1
@@ -67,8 +70,6 @@ highlight GitGutterAdd ctermfg=green guifg=darkgreen
 highlight GitGutterChange ctermfg=yellow guifg=darkyellow
 highlight GitGutterDelete ctermfg=red guifg=darkred
 highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
-"----ack----
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
 " ----nerdtree----
@@ -228,6 +229,8 @@ nnoremap sh <C-w>h
 nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
+nnoremap sJ <C-w>-
+nnoremap sK <C-w>+
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 nnoremap <Leader>t :<C-u>tabnew<CR>
@@ -248,12 +251,12 @@ noremap <S-h> ^
 noremap <S-j> }
 noremap <S-k> {
 noremap <S-l> $
-nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+nnoremap <silent> <C-e> :<C-u>NERDTreeToggle<CR>
 nmap <Leader>/ <Plug>NERDCommenterToggle:<C-u>w<CR>
 vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
-nnoremap <Leader>p :Files <CR>
-nnoremap <Leader>g :GFiles? <CR>
-nnoremap <Leader><S-f> :Ag <CR>
+nnoremap <Leader>p :<C-u>Files<CR>
+nnoremap <Leader>g :<C-u>GFiles?<CR>
+nnoremap <Leader><S-f> :<C-u>Ag<CR>
 
 
 " ----others----
@@ -272,6 +275,10 @@ set smartcase
 set hlsearch
 
 " no swap file
+set nobackup
+set noswapfile
+
+" set backspace
 set backspace=2
 
 " background theme
