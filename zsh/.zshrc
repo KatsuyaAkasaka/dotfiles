@@ -31,12 +31,14 @@ zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "mollifier/cd-gitroot"
 zplug "b4b4r07/enhancd", use:enhancd.sh
-zplug mafredri/zsh-async, from:github
+zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure"
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 zplug "chrissicool/zsh-256color"
 zplug "Tarrasch/zsh-colors"
 zplug "ascii-soup/zsh-url-highlighter"
+if [[ $ZPLUG_LOADFILE -nt $ZPLUG_CACHE_DIR/interface || ! -f $ZPLUG_CACHE_DIR/interface ]]; then
+	zplug check || zplug install
+fi
 
 if ! zplug check --verbose; then
 	printf "Install? [y/N]: "
@@ -98,8 +100,8 @@ function cdls() {
 }
 
 set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+# let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+# let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 # fbr - checkout git branch
 fbr() {
@@ -113,24 +115,19 @@ fbr() {
 fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
+		-o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
 fadd() {
-  local out q n addfiles
-  while out=$(
-      git status --short |
-      awk '{if (substr($0,2,1) !~ / /) print $2}' |
-      fzf-tmux --multi --exit-0 --expect=ctrl-d); do
-    q=$(head -1 <<< "$out")
-    n=$[$(wc -l <<< "$out") - 1]
-    addfiles=(`echo $(tail "-$n" <<< "$out")`)
-    [[ -z "$addfiles" ]] && continue
-    if [ "$q" = ctrl-d ]; then
-      git diff --color=always $addfiles | less -R
-    else
-      git add $addfiles
-    fi
-  done
+	local selected
+	selected=$(unbuffer git status --short | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color"  | awk '{print $2}')
+		if [[ -n "$selected" ]]; then
+			selected=$(tr '\n' ' ' <<< "$selected")
+			for s in ${=selected}; do
+				git add $s
+			done
+		fi
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

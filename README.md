@@ -6,3 +6,5 @@ cd && git clone https://github.com/KatsuyaAkasaka/dotfiles.git && ./dotfiles/set
 then install each font in `etc/font/`
 
 finally, you can create development environment!
+
+

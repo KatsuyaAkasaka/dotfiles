@@ -17,15 +17,15 @@ brew bundle --global
 echo "change default shell \"zsh\"..."
 # /usr/local/bin/zsh
 # Make ZSH the default shell environment
-echo "change shell"
-sudo chmod 777 /etc/shells
-echo "changed 777"
-sh -c "echo /usr/local/bin/zsh >> /etc/shells"
-echo "written path"
+grep /usr/local/bin/zsh -rl /etc/shells
+ref=$?
+if [ $ref -ne 0 ]; then
+	echo "set up zsh to default"
+	sudo chmod 777 /etc/shells
+	sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+	sudo chmod 755 /etc/shells
+fi
 chsh -s /usr/local/bin/zsh
-echo "change default shell"
-chmod 755 /etc/shells
-echo "return 755"
 
 
 # remove current .zshrc
@@ -41,6 +41,7 @@ if [[ ! -e $HOME/.zplug ]]; then
 fi
 
 echo "loading zshrc..."
+sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc
 
 echo "changing terminal theme..."
