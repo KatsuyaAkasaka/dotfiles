@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/bin/bash
 
 echo "installing homebrew..."
 # Check for Homebrew and install if we don't have it
@@ -10,11 +10,23 @@ fi
 brew update
 
 # Install zsh
+rm $HOME/.Brewfile
+ln -s $HOME/dotfiles/zsh/Brewfile $HOME/.Brewfile
 brew bundle --global
 
 echo "change default shell \"zsh\"..."
+# /usr/local/bin/zsh
 # Make ZSH the default shell environment
+echo "change shell"
+sudo chmod 777 /etc/shells
+echo "changed 777"
+sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+echo "written path"
 chsh -s /usr/local/bin/zsh
+echo "change default shell"
+chmod 755 /etc/shells
+echo "return 755"
+
 
 # remove current .zshrc
 if [[ -e $HOME/.zshrc ]]; then
