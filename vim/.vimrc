@@ -41,7 +41,14 @@ endif
 
 filetype plugin indent on 
 syntax enable
+" ----ultisnips----
+let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"  
 
+" ----winresizer----
+let g:winresizer_start_key = '<C-S>'
+let g:winresizer_gui_start_key = '<C-S>'
 " ----vimgo----
 let g:go_hightlight_functions = 1
 let g:go_hightlight_methods = 1
@@ -52,17 +59,17 @@ let g:go_hightlight_build_constraints = 1
 " ----gitguitter----
 let g:gitgutter_enabled = 1
 set signcolumn=yes
-highlight signcolumn ctermbg=cyan
 set updatetime=1000
+highlight clear SignColumn
+autocmd ColorScheme * highlight GitGutterAdd ctermfg=78
+highlight GitGutterChange ctermfg=214
+highlight GitGutterDelete ctermfg=197
+highlight GitGutterChangeDelete ctermfg=197
 let g:gitgutter_sign_added = '.'
 let g:gitgutter_sign_modified = '.'
 let g:gitgutter_sign_removed = '.'
 let g:gitgutter_sign_removed_first_line = '.'
 let g:gitgutter_sign_modified_removed = '.'
-highlight GitGutterAdd ctermfg=green guifg=darkgreen
-highlight GitGutterChange ctermfg=yellow guifg=darkyellow
-highlight GitGutterDelete ctermfg=red guifg=darkred
-highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
 
 " ----nerdtree----

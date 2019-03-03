@@ -17,9 +17,6 @@ repo = 'Shougo/neocomplete.vim'
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-
-[[plugins]]
 repo = 'scrooloose/nerdcommenter'
 
 [[plugins]]
@@ -27,5 +24,17 @@ repo = 'junegunn/fzf'
 build = './install --all'
 
 [[plugins]]
+repo = 'rking/ag.vim'
+
+[[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
