@@ -41,13 +41,6 @@ endif
 
 filetype plugin indent on 
 syntax enable
-" ----ag----
-command! -bang -nargs=? -complete=dir Ag
-	\ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('up:60%') : fzf#vim#with_preview('right:50%'), <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
 
 " ----vimgo----
 let g:go_hightlight_functions = 1
@@ -84,6 +77,27 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(<q-args>,
+  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \                 <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(),
+  \   <bang>0)
+" command! -bang -nargs=* Rg
+  " \ call fzf#vim#grep(
+  " \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  " \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  " \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  " \   <bang>0)
 
 " ----nerdcommenter----
 let g:NERDCreateDefaultMappings = 0
@@ -256,7 +270,7 @@ nmap <Leader>/ <Plug>NERDCommenterToggle:<C-u>w<CR>
 vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
 nnoremap <Leader>p :<C-u>Files<CR>
 nnoremap <Leader>g :<C-u>GFiles?<CR>
-nnoremap <Leader><S-f> :<C-u>Ag<CR>
+nnoremap <Leader>f :<C-u>Rg<CR>
 
 
 " ----others----
