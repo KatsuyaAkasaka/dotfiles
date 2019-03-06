@@ -41,11 +41,8 @@ endif
 
 filetype plugin indent on 
 syntax enable
-" ----ultisnips----
-let g:UltiSnipsExpandTrigger="<tab>"                                            
-let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"  
-
+" ----deoplete----
+let g:deoplete#enable_at_startup = 1
 " ----winresizer----
 let g:winresizer_start_key = '<C-S>'
 let g:winresizer_gui_start_key = '<C-S>'
@@ -63,6 +60,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enablesd = ['vet']
 autocmd FileType go :highlight goErr cterm=bold ctermfg=214
 autocmd FileType go :match goErr /\<err\>/
 " ----gitguitter----

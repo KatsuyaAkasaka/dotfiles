@@ -2,9 +2,6 @@
 repo = 'Shougo/neosnippet'
 
 [[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
@@ -21,9 +18,32 @@ repo = 'Townk/vim-autoclose'
 
 [[plugins]]
 repo = 'othree/yajs.vim'
-on_ft = ['javascript']
-
+on_ft = 'javascript'
 
 [[plugins]]
 repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_add = 'let g:deoplete#enable_at_startup = 1'
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
 
