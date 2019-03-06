@@ -1,46 +1,50 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-
+#
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
-
+#
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
 
 [[plugins]]
-repo = 'scrooloose/syntastic'
+repo = 'vim-syntastic/syntastic'
 hook_add = 'source ~/.config/nvim/plugins/syntastic.vim'
 
-[[plugins]]
-repo = 'Shougo/neocomplete.vim'
-hook_add = 'source ~/.config/nvim/plugins/neocomplete.vim'
+# [[plugins]]
+# repo = 'Shougo/neocomplete.vim'
+# hook_add = 'source ~/.config/nvim/plugins/neocomplete.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
-
+#
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = 'source ~/.config/nvim/plugins/nerdcommenter.vim'
-
+# #
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
-
+#
 [[plugins]]
 repo = 'rking/ag.vim'
-
+# #
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 hook_add = 'source ~/.config/nvim/plugins/fzf.vim'
-
-[[plugins]]
-repo = 'simeji/winresizer'
-hook_add = 'source ~/.config/nvim/plugins/winresizer.vim'
-
+#
+# [[plugins]]
+# repo = 'simeji/winresizer'
+# hook_add = 'source ~/.config/nvim/plugins/winresizer.vim'
+#
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
+
+[[plugins]]
+repo = 'w0rp/ale'
+hook_add = 'source ~/.config/nvim/plugins/ale.vim'

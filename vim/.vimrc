@@ -39,213 +39,8 @@ endif
 
 "----------plugins--------------
 
-filetype plugin indent on 
+filetype plugin indent on
 syntax enable
-" ----deoplete----
-let g:deoplete#enable_at_startup = 1
-" ----winresizer----
-let g:winresizer_start_key = '<C-S>'
-let g:winresizer_gui_start_key = '<C-S>'
-" ----vimgo----
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enablesd = ['vet']
-autocmd FileType go :highlight goErr cterm=bold ctermfg=214
-autocmd FileType go :match goErr /\<err\>/
-" ----gitguitter----
-let g:gitgutter_enabled = 1
-set signcolumn=yes
-set updatetime=1000
-highlight clear SignColumn
-autocmd ColorScheme * highlight GitGutterAdd ctermfg=78
-highlight GitGutterChange ctermfg=214
-highlight GitGutterDelete ctermfg=197
-highlight GitGutterChangeDelete ctermfg=197
-let g:gitgutter_sign_added = '.'
-let g:gitgutter_sign_modified = '.'
-let g:gitgutter_sign_removed = '.'
-let g:gitgutter_sign_removed_first_line = '.'
-let g:gitgutter_sign_modified_removed = '.'
-
-
-" ----nerdtree----
-let g:NERDTreeDirArrows = 1
-" let g:NERDTreeDirArrowExpandable  = ''
-" let g:NERDTreeDirArrowCollapsible = ''
-let NERDTreeShowHidden=1
-
-" ----fzf----
-let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(<q-args>,
-  \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-  \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \                 <bang>0)
-
-command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(),
-  \   <bang>0)
-" command! -bang -nargs=* Rg
-  " \ call fzf#vim#grep(
-  " \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  " \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  " \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  " \   <bang>0)
-
-" ----nerdcommenter----
-let g:NERDCreateDefaultMappings = 0
-let g:NERDDefaultAlign='left'
-let g:NERDSpaceDelims = 1
-
-" ----vim-indent-guides----
-let g:indent_guides_enable_on_vim_startup = 1
-set tabstop=2
-set shiftwidth=2
-
-" ----syntastic----
-let g:syntastic_enable_signs = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_javascript_checkers=['eslint']
-
-" ----neocomplete----
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-			\ 'default' : '',
-			\ 'vimshell' : $HOME.'/.vimshell_hist',
-			\ 'scheme' : $HOME.'/.gosh_completions'
-			\ }
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-" Enable omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-
-" ----lightline----
-let g:lightline = {
-			\ 'colorscheme': 'seoul256',
-			\ 'mode_map': {'c': 'NORMAL'},
-			\ 'active': {
-			\   'right': [ [ 'syntastic', 'lineinfo' ],
-			\              [ 'percent' ], [ 'winform' ],
-			\              [ 'fileformat', 'fileencoding', 'filetype' ] ],
-			\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'branch', 'filename' ] ]
-			\ },
-			\ 'component_function': {
-			\   'linetotal': 'LightLineTotal',
-			\   'modified': 'LightLineModified',
-			\   'readonly': 'LightLineReadonly',
-			\   'fugitive': 'LightLineFugitive',
-			\   'filename': 'LightLineFilename',
-			\   'filepath': 'LightLineFilepath',
-			\   'fileformat': 'LightLineFileformat',
-			\   'filetype': 'LightLineFiletype',
-			\   'fileencoding': 'LightLineFileencoding',
-			\   'mode': 'LightLineMode',
-			\   'winform': 'LightLineWinform'
-			\ },
-			\ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-			\ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
-			\ 'component_expand': {
-			\   'syntastic': 'SyntasticStatuslineFlag',
-			\ },
-			\ 'component_type': {
-			\   'syntastic': 'error',
-			\ }
-			\ }
-
-function! LightLineWinform()
-	return winwidth(0) > 50 ? 'w' . winwidth(0) . ':' . 'h' . winheight(0) : ''
-endfunction
-
-function! LightLineModified()
-	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? "⭤" : ''
-endfunction
-
-function! LightLineFilename()
-	return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-				\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-				\  &ft == 'unite' ? unite#get_status_string() :
-				\  &ft == 'vimshell' ? vimshell#get_status_string() :
-				\ '' != expand('%') && winwidth(0) <=120 ? expand('%:t') : winwidth(0) >120 ? expand('%:p') : '[No Name]') .
-				\ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFilepath()
-	return winwidth(0) <=120 ? expand('%:h') : ''
-endfunction
-
-function! LightLineFugitive()
-	try
-		if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && winwidth(0) > 55
-			let _ = fugitive#head()
-			return strlen(_) ? '⭠ '._ : ''
-		endif
-	catch
-	endtry
-	return ''
-endfunction
-
-function! LightLineFileformat()
-	return winwidth(0) > 80 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-	return winwidth(0) > 60 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-	return winwidth(0) > 30 ? lightline#mode() : ''
-endfunction
-
-function! s:syntastic()
-	SyntasticCheck
-	call lightline#update()
-endfunction
 
 "----keymap----
 let mapleader="\<Space>"
@@ -262,8 +57,8 @@ nnoremap sK <C-w>+
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 nnoremap <Leader>t :<C-u>tabnew<CR>
-nnoremap <Leader>l gt 
-nnoremap <Leader>h gT 
+nnoremap <Leader>l gt
+nnoremap <Leader>h gT
 nnoremap <CR> i<CR><ESC>
 nnoremap <Leader>s :<C-u>w<CR>
 nnoremap <Leader>w :<C-u>wq<CR>
@@ -327,7 +122,7 @@ highlight LineNr ctermbg=none
 highlight Folded ctermbg=none
 " row number
 set number
-" highlight row number 
+" highlight row number
 set cursorline
 " status line row
 set laststatus=2
@@ -345,45 +140,4 @@ set lines=800
 set columns=100
 
 set mouse=a
-
-" hi MatchParen cterm=bold ctermbg=239 ctermfg=177
-" hi Search ctermbg=177 ctermfg=239
-function! s:get_syn_id(transparent)
-	let synid = synID(line("."), col("."), 1)
-	if a:transparent
-		return synIDtrans(synid)
-	else
-		return synid
-	endif
-endfunction
-function! s:get_syn_attr(synid)
-	let name = synIDattr(a:synid, "name")
-	let ctermfg = synIDattr(a:synid, "fg", "cterm")
-	let ctermbg = synIDattr(a:synid, "bg", "cterm")
-	let guifg = synIDattr(a:synid, "fg", "gui")
-	let guibg = synIDattr(a:synid, "bg", "gui")
-	return {
-				\ "name": name,
-				\ "ctermfg": ctermfg,
-				\ "ctermbg": ctermbg,
-				\ "guifg": guifg,
-				\ "guibg": guibg}
-endfunction
-function! s:get_syn_info()
-	let baseSyn = s:get_syn_attr(s:get_syn_id(0))
-	echo "name: " . baseSyn.name .
-				\ " ctermfg: " . baseSyn.ctermfg .
-				\ " ctermbg: " . baseSyn.ctermbg .
-				\ " guifg: " . baseSyn.guifg .
-				\ " guibg: " . baseSyn.guibg
-	let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
-	echo "link to"
-	echo "name: " . linkedSyn.name .
-				\ " ctermfg: " . linkedSyn.ctermfg .
-				\ " ctermbg: " . linkedSyn.ctermbg .
-				\ " guifg: " . linkedSyn.guifg .
-				\ " guibg: " . linkedSyn.guibg
-endfunction
-command! SyntaxInfo call s:get_syn_info()
-
 

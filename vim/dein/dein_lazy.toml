@@ -1,50 +1,49 @@
-[[plugins]]
-repo = 'Shougo/neosnippet'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'Shougo/vimfiler.vim'
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/vimshell.vim'
-
-[[plugins]]
-repo = 'Townk/vim-autoclose'
-
-[[plugins]]
-repo = 'othree/yajs.vim'
-on_ft = 'javascript'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_add = 'let g:deoplete#enable_at_startup = 1'
-
-[[plugins]]
-repo = 'Shougo/neco-vim'
-
-[[plugins]]
-repo = 'Shougo/neco-syntax'
-
-[[plugins]]
-repo = 'zchee/deoplete-go'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'ujihisa/neco-look'
-
-[[plugins]]
-repo = 'roxma/vim-hug-neovim-rpc'
-
-[[plugins]]
-repo = 'roxma/nvim-yarp'
-
+# [[plugins]]
+# repo = 'Shougo/neosnippet'
+#
+# [[plugins]]
+# repo = 'tpope/vim-fugitive'
+#
+# [[plugins]]
+# repo = 'Shougo/vimfiler.vim'
+#
+# [[plugins]]
+# repo = 'Shougo/unite.vim'
+#
+# [[plugins]]
+# repo = 'Shougo/vimshell.vim'
+#
+# [[plugins]]
+# repo = 'Townk/vim-autoclose'
+#
+# [[plugins]]
+# repo = 'othree/yajs.vim'
+# on_ft = 'javascript'
+#
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = 'go'
+# hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
+#
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# hook_add = 'let g:deoplete#enable_at_startup = 1'
+#
+# [[plugins]]
+# repo = 'Shougo/neco-vim'
+#
+# [[plugins]]
+# repo = 'Shougo/neco-syntax'
+#
+# [[plugins]]
+# repo = 'zchee/deoplete-go'
+# on_ft = 'go'
+#
+# [[plugins]]
+# repo = 'ujihisa/neco-look'
+#
+# [[plugins]]
+# repo = 'roxma/vim-hug-neovim-rpc'
+#
+# [[plugins]]
+# repo = 'roxma/nvim-yarp'

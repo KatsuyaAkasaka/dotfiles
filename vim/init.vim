@@ -30,7 +30,6 @@ if dein#load_state(s:dein_dir)
 	call dein#end()
 	call dein#save_state()
 endif
-
 " If you want to install not installed plugins on startup
 
 if has('vim_starting') && dein#check_install()
@@ -39,12 +38,11 @@ endif
 
 "----------plugins--------------
 
-filetype plugin indent on 
+filetype plugin indent on
 syntax enable
 
 "----keymap----
 let mapleader="\<Space>"
-set clipboard=unnamed
 nnoremap s <Nop>
 nnoremap ss :<C-u>sp<CR>
 nnoremap sv :<C-u>vs<CR>
@@ -57,8 +55,8 @@ nnoremap sK <C-w>+
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
 nnoremap <Leader>t :<C-u>tabnew<CR>
-nnoremap <Leader>l gt 
-nnoremap <Leader>h gT 
+nnoremap <Leader>l gt
+nnoremap <Leader>h gT
 nnoremap <CR> i<CR><ESC>
 nnoremap <Leader>s :<C-u>w<CR>
 nnoremap <Leader>w :<C-u>wq<CR>
@@ -80,29 +78,32 @@ vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
 nnoremap <Leader>p :<C-u>Files<CR>
 nnoremap <Leader>g :<C-u>GFiles?<CR>
 nnoremap <Leader>f :<C-u>Rg<CR>
+nmap <Esc><Esc> :nohlsearch<CR><Esc> 
 
-
-" ----others----
+" クリップボードにコピー
+set clipboard=unnamed
+" ファイル保存時のエンコーディング形式
 set fileencoding=utf-8
+" ファイル読み込み時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+" 日本語の文字コードを自動判別
 set fileformats=unix,dos,mac
+" 全角文字を正しく表示させるため
 set ambiwidth=double
-
+" 画面上でタブが占める割合
 set tabstop=2
+" shiftの幅
 set shiftwidth=2
+" インデントの増減をよしなにする
 set smartindent
-set incsearch
+" 大文小文字を検索時に考慮しない
 set ignorecase
+" 大文字入ってきたときにはそれを考慮した検索結果を返す
 set smartcase
-" highlight search result
-set hlsearch
-
-" no swap file
+" チルダファイル作成無効
 set nobackup
+" swpファイル無効
 set noswapfile
-
-" set backspace
-set backspace=2
 
 " background theme
 set termguicolors
@@ -111,8 +112,6 @@ autocmd ColorScheme * highlight LineNr guibg=NONE
 let g:material_style='palenight'
 set background=dark
 colorscheme vim-material
-" let g:material_theme_style = 'palenight'
-" let g:gruvbox_contrast = 'hard'
 set t_Co=256
 
 " background transparent
@@ -122,7 +121,7 @@ highlight LineNr ctermbg=none
 highlight Folded ctermbg=none
 " row number
 set number
-" highlight row number 
+" highlight row number
 set cursorline
 " status line row
 set laststatus=2
@@ -130,55 +129,11 @@ set laststatus=2
 set autoread
 
 " change cursor shape
-" let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-" let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
 let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 
-set lines=800
-set columns=100
+set lines=53
+set columns=191
 
 set mouse=a
-
-" hi MatchParen cterm=bold ctermbg=239 ctermfg=177
-" hi Search ctermbg=177 ctermfg=239
-function! s:get_syn_id(transparent)
-	let synid = synID(line("."), col("."), 1)
-	if a:transparent
-		return synIDtrans(synid)
-	else
-		return synid
-	endif
-endfunction
-function! s:get_syn_attr(synid)
-	let name = synIDattr(a:synid, "name")
-	let ctermfg = synIDattr(a:synid, "fg", "cterm")
-	let ctermbg = synIDattr(a:synid, "bg", "cterm")
-	let guifg = synIDattr(a:synid, "fg", "gui")
-	let guibg = synIDattr(a:synid, "bg", "gui")
-	return {
-				\ "name": name,
-				\ "ctermfg": ctermfg,
-				\ "ctermbg": ctermbg,
-				\ "guifg": guifg,
-				\ "guibg": guibg}
-endfunction
-function! s:get_syn_info()
-	let baseSyn = s:get_syn_attr(s:get_syn_id(0))
-	echo "name: " . baseSyn.name .
-				\ " ctermfg: " . baseSyn.ctermfg .
-				\ " ctermbg: " . baseSyn.ctermbg .
-				\ " guifg: " . baseSyn.guifg .
-				\ " guibg: " . baseSyn.guibg
-	let linkedSyn = s:get_syn_attr(s:get_syn_id(1))
-	echo "link to"
-	echo "name: " . linkedSyn.name .
-				\ " ctermfg: " . linkedSyn.ctermfg .
-				\ " ctermbg: " . linkedSyn.ctermbg .
-				\ " guifg: " . linkedSyn.guifg .
-				\ " guibg: " . linkedSyn.guibg
-endfunction
-command! SyntaxInfo call s:get_syn_info()
-
 
