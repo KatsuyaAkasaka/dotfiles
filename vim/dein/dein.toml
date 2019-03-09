@@ -13,10 +13,6 @@ hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
 repo = 'vim-syntastic/syntastic'
 hook_add = 'source ~/.config/nvim/plugins/syntastic.vim'
 
-# [[plugins]]
-# repo = 'Shougo/neocomplete.vim'
-# hook_add = 'source ~/.config/nvim/plugins/neocomplete.vim'
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
@@ -36,11 +32,11 @@ repo = 'rking/ag.vim'
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
 hook_add = 'source ~/.config/nvim/plugins/fzf.vim'
-#
-# [[plugins]]
-# repo = 'simeji/winresizer'
-# hook_add = 'source ~/.config/nvim/plugins/winresizer.vim'
-#
+
+[[plugins]]
+repo = 'simeji/winresizer'
+hook_add = 'source ~/.config/nvim/plugins/winresizer.vim'
+
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
