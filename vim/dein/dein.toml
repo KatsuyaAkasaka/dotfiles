@@ -42,5 +42,12 @@ repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
 
 [[plugins]]
-repo = 'w0rp/ale'
-hook_add = 'source ~/.config/nvim/plugins/ale.vim'
+repo = 'Shougo/deoplete.nvim'
+on_event = 'InsertEnter'
+hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+build = 'bash install.sh'
+rev = 'next'
+hook_add = 'source ~/.config/nvim/plugins/languageClient-neovim.vim'

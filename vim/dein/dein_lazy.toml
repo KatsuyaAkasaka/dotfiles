@@ -20,24 +20,16 @@
 # repo = 'othree/yajs.vim'
 # on_ft = 'javascript'
 #
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = 'go'
-# hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
-#
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# hook_add = 'let g:deoplete#enable_at_startup = 1'
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
 #
 # [[plugins]]
 # repo = 'Shougo/neco-vim'
 #
 # [[plugins]]
 # repo = 'Shougo/neco-syntax'
-#
-# [[plugins]]
-# repo = 'zchee/deoplete-go'
-# on_ft = 'go'
 #
 # [[plugins]]
 # repo = 'ujihisa/neco-look'
