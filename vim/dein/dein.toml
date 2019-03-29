@@ -1,10 +1,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-#
+
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
-#
+
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
@@ -16,18 +16,18 @@ hook_add = 'source ~/.config/nvim/plugins/syntastic.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
-#
+
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = 'source ~/.config/nvim/plugins/nerdcommenter.vim'
-# #
+
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
-#
+
 [[plugins]]
 repo = 'rking/ag.vim'
-# #
+
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']

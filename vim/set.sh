@@ -11,6 +11,14 @@ COLOR=$HERE/colors
 SETCOLOR=$HOME/.vim/colors
 ln -s $COLOR $SETCOLOR
 
+echo "changing vim syntax..."
+SYNTAX=$HERE/syntax
+SETSYNTAX=$HOME/.vim/syntax
+ln -s $SYNTAX $SETSYNTAX
+FILETYPE=$HERE/filetype.vim
+SETFT=$HOME/.vim/filetype.vim
+ln -s $FILETYPE $SETFT
+
 echo "loading package..."
 DEIN=$HERE/dein
 SETDEIN=$HOME/.vim/repos
