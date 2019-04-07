@@ -2,7 +2,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # path 
-export LANG="en_US.UTF-8"
+export LANG="ja_JP.UTF-8"
 export TERM="xterm-256color"
 export RBPATH="$HOME/.rbenv/bin"
 export PYPATH="$HOME/.pyenv/bin"

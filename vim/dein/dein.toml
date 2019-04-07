@@ -1,10 +1,10 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
-#
+
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
-#
+
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
@@ -16,18 +16,18 @@ hook_add = 'source ~/.config/nvim/plugins/syntastic.vim'
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
-#
+
 [[plugins]]
 repo = 'scrooloose/nerdcommenter'
 hook_add = 'source ~/.config/nvim/plugins/nerdcommenter.vim'
-# #
+
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
-#
+
 [[plugins]]
 repo = 'rking/ag.vim'
-# #
+
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
@@ -42,12 +42,10 @@ repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
+repo = 'prabirshrestha/async.vim'
+hook_add = 'source ~/.config/nvim/plugins/async.vim'
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-build = 'bash install.sh'
-rev = 'next'
-hook_add = 'source ~/.config/nvim/plugins/languageClient-neovim.vim'
+repo = 'prabirshrestha/vim-lsp'
+hook_add = 'source ~/.config/nvim/plugins/vim-lsp.vim'
+
