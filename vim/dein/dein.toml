@@ -42,12 +42,10 @@ repo = 'airblade/vim-gitgutter'
 hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
 
 [[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_add = 'source ~/.config/nvim/plugins/deoplete.vim'
+repo = 'prabirshrestha/async.vim'
+hook_add = 'source ~/.config/nvim/plugins/async.vim'
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-build = 'bash install.sh'
-rev = 'next'
-hook_add = 'source ~/.config/nvim/plugins/languageClient-neovim.vim'
+repo = 'prabirshrestha/vim-lsp'
+hook_add = 'source ~/.config/nvim/plugins/vim-lsp.vim'
+

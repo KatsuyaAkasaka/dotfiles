@@ -59,13 +59,15 @@ nnoremap <Leader>l gt
 nnoremap <Leader>h gT
 nnoremap <CR> i<CR><ESC>
 nnoremap <Leader>s :<C-u>w<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>w :<C-u>wq<CR>
 nnoremap <Leader>q :<C-u>q!<CR>
 nnoremap <TAB> I<TAB><ESC>
 inoremap <silent> jj <ESC>
 nnoremap j gj
 nnoremap k gk
-nnoremap gj j
+nnorema  gj j
 nnoremap gk k
 nnoremap x "_x
 noremap <S-h> ^
@@ -73,12 +75,14 @@ noremap <S-j> }
 noremap <S-k> {
 noremap <S-l> $
 nnoremap <silent> <C-e> :<C-u>NERDTreeToggle<CR>
-nmap <Leader>/ <Plug>NERDCommenterToggle:<C-u>w<CR>
-vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
+" nmap <Leader>/ <Plug>NERDComComment:<C-u>w<CR>
+vmap <Leader>/ <Plug>NERDComToggleComment:<C-u>w<CR>
 nnoremap <Leader>p :<C-u>Files<CR>
 nnoremap <Leader>g :<C-u>GFiles?<CR>
 nnoremap <Leader>f :<C-u>Rg<CR>
 nmap <Esc><Esc> :nohlsearch<CR><Esc> 
+nnoremap <buffer> gd :<C-u>LspDefinition<CR>
+
 
 " クリップボードにコピー
 set clipboard=unnamed
