@@ -6,6 +6,14 @@ rm -rf $HOME/.config/nvim
 mkdir $HOME/.vim
 mkdir -p $HOME/.config/nvim
 
+echo "installing dein"
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+
+echo "loading package..."
+DEIN=$HERE/dein
+SETDEIN=$HOME/.vim/repos
+ln -s $DEIN $SETDEIN
+
 echo "changing vim theme..."
 COLOR=$HERE/colors
 SETCOLOR=$HOME/.vim/colors
@@ -18,11 +26,6 @@ ln -s $SYNTAX $SETSYNTAX
 FILETYPE=$HERE/filetype.vim
 SETFT=$HOME/.vim/filetype.vim
 ln -s $FILETYPE $SETFT
-
-echo "loading package..."
-DEIN=$HERE/dein
-SETDEIN=$HOME/.vim/repos
-ln -s $DEIN $SETDEIN
 
 echo "loading vimrc..."
 VIMRC=$HERE/.vimrc

@@ -30,7 +30,6 @@ if dein#load_state(s:dein_dir)
 	call dein#end()
 	call dein#save_state()
 endif
-
 " If you want to install not installed plugins on startup
 
 if has('vim_starting') && dein#check_install()
@@ -78,7 +77,14 @@ vmap <Leader>/ <Plug>NERDCommenterInvert:<C-u>w<CR>
 nnoremap <Leader>p :<C-u>Files<CR>
 nnoremap <Leader>g :<C-u>GFiles?<CR>
 nnoremap <Leader>f :<C-u>Rg<CR>
-
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " ----others----
 set fileencoding=utf-8

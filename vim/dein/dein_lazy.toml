@@ -20,10 +20,10 @@
 # repo = 'othree/yajs.vim'
 # on_ft = 'javascript'
 #
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = 'go'
+# hook_add = 'source ~/.config/nvim/plugins/vim-go.vim'
 #
 # [[plugins]]
 # repo = 'Shougo/neco-vim'
