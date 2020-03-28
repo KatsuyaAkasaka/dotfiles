@@ -3,16 +3,24 @@ prompt pure
 
 # path 
 export LANG="ja_JP.UTF-8"
+export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export RBPATH="$HOME/.rbenv/bin"
 export PYPATH="$HOME/.pyenv/bin"
 export GOENV_ROOT="$HOME/.goenv"
 export GOPATH="$HOME/go"
+export GOPROXY="https://proxy.golang.org"
+export GO111MODULE="on"
+# export NODEPATH="$HOME/.nodenv"
+export NODEPATH="$HOME/.nodebrew/current"
 export MYVIMRC="$HOME/.vimrc"
-export PATH="$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export GCLOUDPATH="$HOME/google-cloud-sdk"
+export PGDATA='/usr/local/var/postgres'
+export PATH="$PGDATA:$NODEPATH/bin:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 eval "$(rbenv init - zsh)"
 eval "$(pyenv init - zsh)"
 eval "$(goenv init - zsh)"
+eval "$(nodenv init - zsh)"
 
 # other
 autoload -Uz compinit && compinit
@@ -50,7 +58,7 @@ fi
 
 zplug load --verbose
 
-# .envrc
+# .direnv
 export EDITOR="vim"
 eval "$(direnv hook zsh)"
 
@@ -58,13 +66,25 @@ eval "$(direnv hook zsh)"
 alias ls='ls -G'
 alias l='ls -G'
 alias la='ls -a'
-alias ll='ls -l'
-alias lla='ls -la'
+alias ll='ls -la'
 alias up='cd ..'
+alias cmi='cd ~/Documents/workspace/miami'
 alias mv='mv -i'
 alias cp='cp -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
+alias gc='git commit -m'
+alias gca='git commit --amend'
+alias gp='git push'
+alias gpf='git push -f'
+alias gb='git branch -avv'
+alias cpath='pwd | pbcopy'
+alias d='docker'
+alias dc='docker-compose'
+alias k='kubectl'
+alias npmt='npm run test'
+alias npms='npm run start'
+alias npml='npm run lint'
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f '/Users/sakas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/path.zsh.inc'; 
@@ -132,3 +152,8 @@ fadd() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export GOENV_DISABLE_GOPATH=1
+
+

@@ -6,6 +6,10 @@ endif
 
 " プラグインが実際にインストールされるディレクトリ
 let s:dein_dir = expand('~/.cache/dein')
+if !isdirectory(s:dein_dir)
+	call mkdir(s:dein_dir, 'p')
+endif
+
 " dein.vim 本体
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -17,26 +21,26 @@ if &runtimepath !~# '/dein.vim'
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-if dein#load_state(s:dein_dir)
-	call dein#begin(s:dein_dir)
-
-	let g:rc_dir = expand('~/.vim/repos')
-	let s:toml   = g:rc_dir . '/dein.toml'
-	let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
-
-	call dein#load_toml(s:toml,      {'lazy': 0})
-	call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-	call dein#end()
-	call dein#save_state()
+if !dein#load_state(s:dein_dir)
+	finish
 endif
+
+call dein#begin(s:dein_dir)
+
+let g:rc_dir = expand('~/.vim/repos')
+let s:toml   = g:rc_dir . '/dein.toml'
+let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
+
+call dein#load_toml(s:toml,      {'lazy': 0})
+call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+call dein#end()
+call dein#save_state()
 " If you want to install not installed plugins on startup
 
 if has('vim_starting') && dein#check_install()
 	call dein#install()
 endif
-
-"----------plugins--------------
 
 filetype plugin indent on
 syntax enable
@@ -82,7 +86,10 @@ nnoremap <Leader>g :<C-u>GFiles?<CR>
 nnoremap <Leader>f :<C-u>Rg<CR>
 nmap <Esc><Esc> :nohlsearch<CR><Esc> 
 nnoremap <buffer> gd :<C-u>LspDefinition<CR>
-
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " クリップボードにコピー
 set clipboard=unnamed
