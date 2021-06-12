@@ -1,0 +1,78 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'rakr/vim-one'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
+
+# [[plugins]]
+# repo = 'vim-syntastic/syntastic'
+# hook_add = 'source ~/.config/nvim/plugins/syntastic.vim'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = 'source ~/.config/nvim/plugins/lightline.vim'
+
+[[plugins]]
+repo = 'scrooloose/nerdcommenter'
+hook_add = 'source ~/.config/nvim/plugins/nerdcommenter.vim'
+
+[[plugins]]
+repo = 'rking/ag.vim'
+
+# [[plugins]]
+# repo = 'junegunn/fzf.vim'
+# depends = ['fzf']
+# hook_add = 'source ~/.config/nvim/plugins/fzf.vim'
+
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = 'source ~/.config/nvim/plugins/vim-gitgutter.vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
+
+# [[plugins]]
+# repo = 'othree/yajs.vim'
+# on_ft = ['javascript']
+
+# [[plugins]]
+# repo = 'othree/es.next.syntax.vim'
+# on_ft = ['javascript']
+
+# [[plugins]]
+# repo = 'mxw/vim-jsx'
+
+[[plugins]]
+repo = 'neovim/node-host'
+on_ft = ['javascript', 'javascript.jsx']
+hook_post_update = '''
+  let g:dein#plugin.build = 'npm install'
+'''
+
+[[plugins]]
+repo = 'billyvg/tigris.nvim'
+on_ft = ['javascript', 'javascript.jsx']
+hook_post_update = '''
+  let g:dein#plugin.build = './install.sh'
+  let g:tigris#enabled = 1
+  let g:tigris#on_the_fly_enabled = 1
+  let g:tigris#delay = 300
+'''
+
+# [[plugins]]
+# repo = 'neoclide/coc.nvim'
+# build = 'coc#util#install()'
+# hook_add = 'source ~/.config/nvim/plugins/coc-setting.vim'
+

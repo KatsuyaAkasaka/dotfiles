@@ -16,9 +16,6 @@
 # [[plugins]]
 # repo = 'Townk/vim-autoclose'
 #
-# [[plugins]]
-# repo = 'othree/yajs.vim'
-# on_ft = 'javascript'
 #
 # [[plugins]]
 # repo = 'fatih/vim-go'

@@ -34,18 +34,17 @@ if [[ -e $HOME/.zshrc ]]; then
 fi
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 # download zplug
-
-echo "installing zplug,,,"
-if [[ ! -e $HOME/.zplug ]]; then
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
-fi
+echo "done!"
 
 echo "loading zshrc..."
 sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc
+echo "done!"
 
 echo "changing terminal theme..."
+export ZPLUG_HOME=/usr/local/opt/zplug
 PURE=$HOME/.zplug/repos/sindresorhus/pure
 rm $PURE/pure.plugin.zsh
 
 ln -s $HOME/dotfiles/zsh/pure.plugin.zsh $PURE/pure.plugin.zsh
+echo "done!"

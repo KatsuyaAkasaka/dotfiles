@@ -1,0 +1,31 @@
+if &compatible
+	set nocompatible
+endif
+
+if has('nvim')
+    echo "aaa"
+    let g:rc_dir = expand('~/.config/nvim/rc')
+else
+    echo "bbb"
+    let g:rc_dir = expand('~/.vim/rc')
+endif
+
+" rcファイル読み込み関数
+function! s:source_rc(rc_file_name)
+    let rc_file = expand(g:rc_dir . '/' . a:rc_file_name)
+    if filereadable(rc_file)
+        execute 'source' rc_file
+    endif
+endfunction
+
+" Dein.vim
+call s:source_rc('dein.rc.vim')
+
+" keymap
+call s:source_rc('keymap.rc.vim')
+
+" editor
+call s:source_rc('editor.rc.vim')
+
+call s:source_rc('hg.vim')
+
