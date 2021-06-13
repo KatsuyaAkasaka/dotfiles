@@ -2,5 +2,5 @@
 " profile start profile.txt
 " profile file ~/.vim/rc/*
 if 1
-  execute 'source' fnamemodify(expand('<sfile>'), ':h').'/rc/vimrc'
+  execute 'source' fnamemodify(resolve(expand('<sfile>:p')), ':h').'/rc/vimrc'
 endif

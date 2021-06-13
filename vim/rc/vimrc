@@ -3,10 +3,8 @@ if &compatible
 endif
 
 if has('nvim')
-    echo "aaa"
     let g:rc_dir = expand('~/.config/nvim/rc')
 else
-    echo "bbb"
     let g:rc_dir = expand('~/.vim/rc')
 endif
 
