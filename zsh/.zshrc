@@ -16,7 +16,7 @@ export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
 export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
-export PATH="$PGDATA:$NODEPATH/bin:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin"
+export PATH="$PGDATA:$NODEPATH/bin:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 eval "$(rbenv init - zsh)"
 eval "$(pyenv init - zsh)"
 eval "$(goenv init - zsh)"

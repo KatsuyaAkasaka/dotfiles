@@ -15,17 +15,17 @@ ln -s $HOME/dotfiles/zsh/Brewfile $HOME/.Brewfile
 brew bundle --global
 
 echo "change default shell \"zsh\"..."
-# /usr/local/bin/zsh
+# /opt/homebrew/bin/zsh
 # Make ZSH the default shell environment
-grep /usr/local/bin/zsh -rl /etc/shells
+grep /opt/homebrew/bin/zsh -rl /etc/shells
 ref=$?
 if [ $ref -ne 0 ]; then
 	echo "set up zsh to default"
 	sudo chmod 777 /etc/shells
-	sh -c "echo /usr/local/bin/zsh >> /etc/shells"
+	sh -c "echo /opt/homebrew/bin/zsh >> /etc/shells"
 	sudo chmod 755 /etc/shells
 fi
-chsh -s /usr/local/bin/zsh
+chsh -s /opt/homebrew/bin/zsh
 
 
 # remove current .zshrc
