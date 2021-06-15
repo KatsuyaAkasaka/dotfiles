@@ -1,11 +1,15 @@
+cask_args appdir: "/Applications"
+
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+
 brew "cmake"
 brew "gcc"
 brew "go"
 brew "jq"
+brew "tig"
 brew "nmap"
 brew "pkg-config"
 brew "pyenv"
@@ -26,9 +30,17 @@ brew "mysql"
 brew "telnet"
 brew "kubectx"
 brew "kubectl"
+
+cask "alfred"
 cask "docker"
 cask "google-chrome"
 cask "slack"
 cask "karabiner-elements"
 cask "iterm2"
+cask "visual-studio-code"
+cask "insomunia"
+
 tap "mongodb/brew"
+
+mas "Yoink", id: 457622435
+mas "LINE", id: 539883307

@@ -18,7 +18,7 @@ export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
 export PATH="$PGDATA:$NODEPATH/bin:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 eval "$(rbenv init - zsh)"
-eval "$(pyenv init - zsh)"
+# eval "$(pyenv init - zsh)"
 eval "$(goenv init - zsh)"
 # eval "$(nodenv init - zsh)"
 
@@ -39,7 +39,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 補完の時に大文字�
 
 
 #zplug
-source /usr/local/opt/zplug/init.zsh
+source /opt/homebrew/opt/zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
