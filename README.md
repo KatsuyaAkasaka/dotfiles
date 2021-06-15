@@ -26,6 +26,7 @@ see bellow
 - zsh
 - homebrew
 - brew cask
+
 🎉🎉🎉
 
 ## Step.5
