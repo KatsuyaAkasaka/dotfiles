@@ -27,8 +27,8 @@ set log-view    = line-number:yes,interval=1 text
 set blob-view   = line-number:yes,interval=1 text
 set diff-view   = line-number:yes,interval=1 text:yes,commit-title-overflow=no
 
-# set vertical-split = yes
-set vertical-split = no
+set vertical-split = yes
+# set vertical-split = no
 # set vertical-split = auto
 
 set line-graphics = utf-8
@@ -42,10 +42,10 @@ set diff-options = -m --first-parent
 set mouse = true
 set editor-line-number = yes
 set refresh-mode = auto
-#set refresh-mode = after-command
-#set refresh-mode = periodic
-#set refresh-interval = 1
-set diff-highlight = true
+# set refresh-mode = after-command
+# set refresh-mode = periodic
+# set refresh-interval = 1
+# set diff-highlight = true
 
 color diff-header       default red
 color diff-chunk        black   white
