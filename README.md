@@ -1,10 +1,19 @@
 # dotfiles
-just do 
+
+Step.1
+copy setup.sh to your local machine on home directory
+
+Step.2
+check successfuly cloned this repo and do this
 ```
-cd && git clone https://github.com/KatsuyaAkasaka/dotfiles.git && ./dotfiles/setup.sh
+cd dotfiles
 ```
-then install each font in `etc/font/`
 
-finally, you can create development environment!
+Step.3
+just do this
+```
+sh installer.sh
+```
 
-
+Step.4
+🎉🎉🎉
