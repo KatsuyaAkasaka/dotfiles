@@ -8,9 +8,9 @@ repo = 'rakr/vim-one'
 repo = 'scrooloose/nerdtree'
 hook_add = 'source ~/.config/nvim/plugins/nerdtree.vim'
 
-# [[plugins]]
-# repo = 'nathanaelkane/vim-indent-guides'
-# hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = 'source ~/.config/nvim/plugins/vim-indent-guides.vim'
 
 # [[plugins]]
 # repo = 'vim-syntastic/syntastic'
