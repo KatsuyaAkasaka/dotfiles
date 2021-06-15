@@ -12,7 +12,9 @@ then, choose `com.googlecode.iterm2.plist` file in `~/dotfiles/app/iterm`
 
 ## Step.3
 reboot machine!
+
 see why
+
 https://ry-2718.hatenablog.com/entry/2019/04/02/021006
 
 ## Step.4
