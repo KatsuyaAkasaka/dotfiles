@@ -11,7 +11,8 @@ pbcopy < ~/.ssh/id_rsa_github.pub
 ```
 
 ## Step.3
-jump this page, paste public key to key space and save
+jump below page, paste public key to key space and save
+
 https://github.com/settings/ssh/new
 
 ## Step.4
