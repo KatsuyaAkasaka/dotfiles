@@ -19,4 +19,14 @@ sh installer.sh
 
 
 ## Step.4
+your machine setup is totally finished! 
+see bellow
+- vim
+- neovim
+- zsh
+- homebrew
+- brew cask
 🎉🎉🎉
+
+## Step.5
+if you want to setup more, check `./app/`
