@@ -39,6 +39,7 @@ cask "karabiner-elements"
 cask "iterm2"
 cask "visual-studio-code"
 cask "insomunia"
+cask "zoomus"
 
 tap "mongodb/brew"
 
