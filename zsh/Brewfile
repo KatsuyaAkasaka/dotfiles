@@ -40,6 +40,7 @@ cask "iterm2"
 cask "visual-studio-code"
 cask "insomunia"
 cask "zoomus"
+cask "google-japanese-ime"
 
 tap "mongodb/brew"
 
