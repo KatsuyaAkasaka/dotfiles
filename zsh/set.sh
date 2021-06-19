@@ -49,3 +49,7 @@ rm $PURE/pure.plugin.zsh
 ln -s $HOME/dotfiles/zsh/pure.plugin.zsh $PURE/pure.plugin.zsh
 echo "done!"
 
+echo "vscode vim enable to repeating..."
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
+defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+echo "done!"
