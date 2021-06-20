@@ -36,6 +36,17 @@ ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 # download zplug
 echo "done!"
 
+echo "installing envs"
+git clone https://github.com/syndbg/goenv.git ~/.goenv
+
+git clone git://github.com/nodenv/nodenv.git ~/.nodenv
+cd ~/.nodenv && src/configure && make -C src
+git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
+git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+
+
+echo "done!"
+
 echo "loading zshrc..."
 sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc

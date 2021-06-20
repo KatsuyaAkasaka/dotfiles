@@ -11,12 +11,12 @@ export GOPATH="$HOME/go"
 export GOPROXY="https://proxy.golang.org"
 export GO111MODULE="on"
 # export NODEPATH="$HOME/.nodenv"
-export NODEPATH="$HOME/.nodebrew/current"
+export NODEPATH="$HOME/.nodenv"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
 export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
-export PATH="$PGDATA:$NODEPATH/bin:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
+export PATH="$PGDATA:$NODEPATH/bin:$NODEPATH/shims:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 eval "$(rbenv init - zsh)"
 # eval "$(pyenv init - zsh)"
 eval "$(goenv init - zsh)"
@@ -77,7 +77,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cmi='cd ~/Documents/workspace/miami'
-alias cside='cd ~/Documents/workspace/zero-one/aquarius/server'
+alias ccoco='cd ~/Documents/workspace/cocolocala'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
