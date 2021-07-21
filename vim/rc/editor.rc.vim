@@ -10,6 +10,7 @@ set expandtab           "タブ入力を複数の空白に置き換える
 set tabstop=2           "タブを含むファイルを開いた際, タブを何文字の空白に変換するか
 set shiftwidth=2        "自動インデントで入る空白数
 set softtabstop=0       "キーボードから入るタブの数
+set clipboard=unnamed,unnamedplus
 
 " if has("autocmd")
 "   "sw=softtabstop, sts=shiftwidth, ts=tabstop, et=expandtabの略
