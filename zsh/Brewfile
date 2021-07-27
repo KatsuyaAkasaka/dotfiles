@@ -28,6 +28,7 @@ brew "mysql"
 brew "telnet"
 brew "kubectx"
 brew "kubectl"
+brew "docker-compose"
 
 cask "alfred"
 cask "docker"
