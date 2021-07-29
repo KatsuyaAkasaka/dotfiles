@@ -42,6 +42,7 @@ cask "zoom"
 cask "google-japanese-ime"
 cask "miro"
 cask "discord"
+cask "itsycal"
 
 tap "mongodb/brew"
 
