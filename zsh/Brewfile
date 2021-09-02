@@ -29,6 +29,7 @@ brew "telnet"
 brew "kubectx"
 brew "kubectl"
 brew "docker-compose"
+brew "java"
 brew "graphviz"
 
 cask "alfred"

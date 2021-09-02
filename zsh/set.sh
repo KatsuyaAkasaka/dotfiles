@@ -14,6 +14,9 @@ rm $HOME/.Brewfile
 ln -s $HOME/dotfiles/zsh/Brewfile $HOME/.Brewfile
 brew bundle --global
 
+# install java
+ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
 echo "change default shell \"zsh\"..."
 zshPass=`which zsh`
 # /opt/homebrew/bin/zsh
