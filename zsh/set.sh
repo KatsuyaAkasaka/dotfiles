@@ -54,6 +54,9 @@ sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc
 echo "done!"
 
+echo "installing gcloud..."
+curl https://sdk.cloud.google.com | bash
+
 echo "changing terminal theme..."
 export ZPLUG_HOME=/usr/local/opt/zplug
 PURE=$HOME/.zplug/repos/sindresorhus/pure

@@ -4,6 +4,7 @@ tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "mongodb/brew"
 
 brew "cmake"
 brew "gcc"
@@ -29,6 +30,7 @@ brew "telnet"
 brew "kubectx"
 brew "kubectl"
 brew "docker-compose"
+brew "mongodb-community"
 
 cask "alfred"
 cask "docker"
@@ -43,8 +45,6 @@ cask "google-japanese-ime"
 cask "miro"
 cask "discord"
 cask "itsycal"
-
-tap "mongodb/brew"
 
 mas "Yoink", id: 457622435
 mas "LINE", id: 539883307
