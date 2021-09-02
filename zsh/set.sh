@@ -14,6 +14,9 @@ rm $HOME/.Brewfile
 ln -s $HOME/dotfiles/zsh/Brewfile $HOME/.Brewfile
 brew bundle --global
 
+# install java
+ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+
 echo "change default shell \"zsh\"..."
 zshPass=`which zsh`
 # /opt/homebrew/bin/zsh
@@ -46,6 +49,8 @@ mkdir -p "$(nodenv root)"/plugins
 git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+cd ~/.pyenv && src/configure && make -C src
 
 echo "done!"
 

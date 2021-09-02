@@ -10,17 +10,25 @@ export GOENV_ROOT="$HOME/.goenv"
 export GOPATH="$HOME/go"
 export GOPROXY="https://proxy.golang.org"
 export GO111MODULE="on"
-# export NODEPATH="$HOME/.nodenv"
-export NODEPATH="$HOME/.nodenv"
+export PYENV_ROOT="$HOME/.pyenv"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
 export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
-export PATH="$PGDATA:$NODEPATH/bin:$NODEPATH/shims:$GCLOUDPATH/bin:$RBPATH:$PYPATH:$GOENV_ROOT/bin:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
+export PATH="$PGDATA:$GCLOUDPATH/bin:$RBPATH:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 eval "$(rbenv init - zsh)"
-# eval "$(pyenv init - zsh)"
+
+#setup node
+export NODENV_ROOT="$HOME/.nodenv"
+PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
+
+# setup python
+PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+#setup golang
+PATH="$GOENV_ROOT/bin::$PATH"
 eval "$(goenv init - zsh)"
-# eval "$(nodenv init - zsh)"
 
 # zsh setting
 autoload -Uz compinit && compinit  # 補完
@@ -39,7 +47,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 補完の時に大文字�
 
 
 #zplug
-source /opt/homebrew/opt/zplug/init.zsh
+source /usr/local/opt/zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
@@ -77,7 +85,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cmi='cd ~/Documents/workspace/miami'
-alias ccoco='cd ~/Documents/workspace/cocolocala'
+alias cco='cd ~/Documents/workspace/cocolocala'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
@@ -216,3 +224,9 @@ fch() {
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
 }
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s06164/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s06164/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s06164/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s06164/google-cloud-sdk/completion.zsh.inc'; fi

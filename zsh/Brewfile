@@ -31,6 +31,8 @@ brew "kubectx"
 brew "kubectl"
 brew "docker-compose"
 brew "mongodb-community"
+brew "java"
+brew "graphviz"
 
 cask "alfred"
 cask "docker"
