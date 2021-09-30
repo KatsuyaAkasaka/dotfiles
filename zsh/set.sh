@@ -26,13 +26,14 @@ fi
 chsh -s $zshPass
 
 
-# remove current .zshrc
+echo "remove current .zshrc"
 if [[ -e $HOME/.zshrc ]]; then
 	rm -rf $HOME/.zshrc
 fi
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
-# download zplug
-echo "done!"
+
+echo "download zplug"
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 echo "installing envs"
 git clone https://github.com/syndbg/goenv.git ~/.goenv
