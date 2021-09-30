@@ -12,7 +12,7 @@ brew bundle --global
 ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 echo "change default shell \"zsh\"..."
-zshPass=`which zsh`
+zshPass=`dirname $(which brew)`/zsh
 # /opt/homebrew/bin/zsh
 # Make ZSH the default shell environment 
 grep $zshPass -rl /etc/shells
