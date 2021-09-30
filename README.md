@@ -1,7 +1,16 @@
 # dotfiles
 
+##
+run bellow to install develop tool.
+```
+git
+```
+
 ## Step.1
-copy setup.sh to your local machine on home directory
+copy setup.sh to your local machine on home directory and run this
+```
+sh setup.sh
+```
 
 
 ## Step.2
@@ -19,7 +28,7 @@ sh installer.sh
 
 
 ## Step.4
-your machine setup is totally finished! 
+your machine setup is totally finished!
 see bellow
 - vim
 - neovim
