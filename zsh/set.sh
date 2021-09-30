@@ -53,8 +53,10 @@ sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc
 echo "done!"
 
-echo "installing gcloud..."
-curl https://sdk.cloud.google.com | bash
+if [[-e $HOME/google-cloud-sdk]]; then
+	echo "installing gcloud..."
+	curl https://sdk.cloud.google.com | bash
+fi
 
 echo "changing terminal theme..."
 export ZPLUG_HOME=/usr/local/opt/zplug

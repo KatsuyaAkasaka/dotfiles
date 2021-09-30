@@ -21,7 +21,7 @@ cd dotfiles
 
 
 ## Step.3
-just do this
+sign in to app store and just do this
 ```
 sh installer.sh
 ```
