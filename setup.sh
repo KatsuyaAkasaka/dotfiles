@@ -11,7 +11,13 @@ GIT_CLONE="Clone dotfiles"
 # homebrewのインストール
 echo "Install homebrew"
 if test ! $(which brew); then
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+	# m1macの場合はbrewにパスを通す必要あり
+	if uname -m | grep --quiet "arm64" 2>&1 > /dev/null ; then
+		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+		eval "$(/opt/homebrew/bin/brew shellenv)"
+	fi
 else
 	echo "[INFO] already intalled homebrew"
 fi
