@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Update Homebrew recipes
-brew update
+brew update-reset && brew update
 
 # Install zsh
 rm $HOME/.Brewfile
@@ -26,13 +26,16 @@ fi
 chsh -s $zshPass
 
 
-# remove current .zshrc
-if [[ -e $HOME/.zshrc ]]; then
+echo "remove current .zshrc"
+if [ -e $HOME/.zshrc ]; then
 	rm -rf $HOME/.zshrc
 fi
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
-# download zplug
-echo "done!"
+
+if ! which zplug > /dev/null 2>&1; then
+  echo "download zplug"
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi
 
 echo "installing envs"
 git clone https://github.com/syndbg/goenv.git ~/.goenv
