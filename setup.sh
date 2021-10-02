@@ -33,3 +33,6 @@ fi
 # dotfilesのclone
 echo "Clone dotfiles"
 git clone https://github.com/KatsuyaAkasaka/dotfiles
+
+# workspace作成
+mkdir ~/Documents/workspace
