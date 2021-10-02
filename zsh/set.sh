@@ -56,7 +56,7 @@ sudo chmod 755 $HOME/.zshrc
 source $HOME/.zshrc
 echo "done!"
 
-if [[-e $HOME/google-cloud-sdk]]; then
+if [ ! -e $HOME/google-cloud-sdk ]]; then
 	echo "installing gcloud..."
 	curl https://sdk.cloud.google.com | bash
 fi

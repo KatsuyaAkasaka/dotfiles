@@ -3,14 +3,9 @@
 # 必ずホームディレクトリ上で実行すること!!
 cd ~
 
-# 実行内容一覧
-HOMEBREW_INSTALL="Install homebrew"
-GIT_INSTALL="Install git"
-GIT_CLONE="Clone dotfiles"
-
 # homebrewのインストール
-echo "Install homebrew"
-if test ! $(which brew); then
+if ! which brew > /dev/null 2>&1; then
+	echo "Install homebrew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 	# m1macの場合はbrewにパスを通す必要あり
@@ -23,16 +18,24 @@ else
 fi
 
 # gitのインストール
-echo "Install git"
-if test ! $(which git); then
+if ! which git > /dev/null 2>&1; then
+	echo "Install git"
 	brew install git
 else
 	echo "[INFO] already intalled git"
 fi
 
 # dotfilesのclone
-echo "Clone dotfiles"
-git clone https://github.com/KatsuyaAkasaka/dotfiles
+if [ ! -e ~/dotfiles ]; then
+	echo "Clone dotfiles"
+	git clone https://github.com/KatsuyaAkasaka/dotfiles
+else
+	echo "[INFO] already cloned dotfile"
+fi
 
 # workspace作成
-mkdir ~/Documents/workspace
+if [ ! -e ~/Documents/workspace > /dev/null 2>&1 ]; then
+	mkdir ~/Documents/workspace
+else
+	echo "[INFO] already created workspace directory"
+fi
