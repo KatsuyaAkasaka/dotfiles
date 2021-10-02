@@ -47,7 +47,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'  # 補完の時に大文字�
 
 
 #zplug
-source /usr/local/opt/zplug/init.zsh
+source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
@@ -226,7 +226,7 @@ fch() {
 }
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/s06164/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/s06164/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/s06164/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/s06164/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi

@@ -1,7 +1,8 @@
 #! /bin/zsh
 
-cd ~/.ssh
-ssh-keygen -t rsa -f id_rsa_github
+mkdir ~/.ssh
+
+ssh-keygen -t rsa -f ~/.ssh/id_rsa_github
 cd ~/dotfiles
 
 ln -s ~/dotfiles/app/github/ssh_config ~/.ssh/config
