@@ -46,6 +46,7 @@ cask "google-japanese-ime"
 cask "miro"
 cask "discord"
 cask "itsycal"
+cask "gyazo"
 
 mas "Yoink", id: 457622435
 mas "LINE", id: 539883307
