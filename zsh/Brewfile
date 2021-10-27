@@ -45,6 +45,7 @@ cask "miro"
 cask "discord"
 cask "itsycal"
 cask "bear"
+cask "gyazo"
 
 mas "Yoink", id: 457622435
 mas "LINE", id: 539883307
