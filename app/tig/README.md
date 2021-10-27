@@ -1,8 +1,11 @@
 ## Step.1
-just do this
+
+just run this command
+
 ```
-sh set.sh
+sh setup.sh
 ```
 
 ## Step.2
-:tada::tada::tada:
+
+🎉🎉🎉
