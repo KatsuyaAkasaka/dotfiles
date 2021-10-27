@@ -20,7 +20,7 @@ https://github.com/settings/ssh/new
 
 ## Step.4
 
-run this in dotfiles directory
+run this at dotfiles root directory
 
 ```
 git remote set-url origin git@github.com:KatsuyaAkasaka/dotfiles.git
