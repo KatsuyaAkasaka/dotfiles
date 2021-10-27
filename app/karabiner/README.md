@@ -15,3 +15,13 @@ sh set.sh
 ## Step.3
 
 🎉🎉🎉
+
+## Caution!!
+
+if you change configurations from Karabiner-Elements, you need to copy destination config file to dotfile config file.
+
+run this
+
+```
+sh recover.sh
+```

@@ -16,6 +16,25 @@
                 },
                 "rules": [
                     {
+                        "description": "escを押すと英数入力に変更される",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "escape"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    },
+                                    {
+                                        "key_code": "japanese_eisuu"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "left_commandを単体で押すと英数になる",
                         "manipulators": [
                             {
