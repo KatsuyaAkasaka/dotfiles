@@ -143,7 +143,7 @@ function cdls() {
   \cd "$@" && ls
 }
 
-function mkdircd () {
+function mkcd () {
   mkdir -p "$@" && eval cd "\"\$$#\"";
 }
 
