@@ -9,7 +9,7 @@ install `Karabiner-Elements`
 run this command
 
 ```
-sh set.sh
+sh setup.sh
 ```
 
 ## Step.3

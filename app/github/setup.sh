@@ -1,11 +1,11 @@
 #! /bin/zsh
 
-mkdir ~/.ssh
+mkdir $HOME/.ssh
 
-ssh-keygen -t rsa -f ~/.ssh/id_rsa_github
-cd ~/dotfiles
+ssh-keygen -t rsa -f $HOME/.ssh/id_rsa_github
+cd $HOME/dotfiles
 
-ln -s ~/dotfiles/app/github/ssh_config ~/.ssh/config
+ln -s $HOME/dotfiles/app/github/ssh_config $HOME/.ssh/config
 
 git config --global user.name "KatsuyaAkasaka"
 git config --global user.email "akasakatora1208@gmail.om"

@@ -35,7 +35,7 @@
                         ]
                     },
                     {
-                        "description": "left_commandを単体で押すと英数になる",
+                        "description": "left_command, right_commandを単体で押すと英数・かなになる",
                         "manipulators": [
                             {
                                 "from": {
@@ -63,6 +63,36 @@
                                 "to_if_held_down": [
                                     {
                                         "key_code": "left_command"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "parameters": {
+                                    "basic.to_if_held_down_threshold_milliseconds": 100
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_command",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "japanese_kana"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command"
                                     }
                                 ],
                                 "type": "basic"
