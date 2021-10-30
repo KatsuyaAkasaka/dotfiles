@@ -30,6 +30,7 @@ brew "docker-compose"
 brew "mongodb-community"
 brew "java"
 brew "graphviz"
+brew "ngrok"
 
 cask "alfred"
 cask "docker"
