@@ -13,7 +13,7 @@ git
 copy setup.sh to your local machine on home directory and run this
 
 ```
-sh setup.sh
+curl https://raw.githubusercontent.com/KatsuyaAkasaka/dotfiles/setup.sh > setup.sh && chmod 755 ./setup.sh && sh ./setup.sh
 ```
 
 ## Step.2
