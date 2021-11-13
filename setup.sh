@@ -4,7 +4,7 @@
 cd ~
 
 # homebrewのインストール
-if [ ! which brew > /dev/null 2>&1 ]; then
+if ! which brew > /dev/null 2>&1; then
 	echo "Install homebrew"
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -18,7 +18,7 @@ else
 fi
 
 # gitのインストール
-if [ ! which git > /dev/null 2>&1 ]; then
+if ! which git > /dev/null 2>&1; then
 	echo "Install git"
 	brew install git
 else
@@ -26,7 +26,7 @@ else
 fi
 
 # dotfilesのclone
-if [ ! -e ~/dotfiles > /dev/null 2>&1 ]; then
+if ! -e ~/dotfiles > /dev/null 2>&1; then
 	echo "Clone dotfiles"
 	git clone https://github.com/KatsuyaAkasaka/dotfiles
 else
@@ -34,7 +34,7 @@ else
 fi
 
 # workspace作成
-if [ ! -e ~/Documents/workspace > /dev/null 2>&1 ]; then
+if ! -e ~/Documents/workspace > /dev/null 2>&1; then
 	mkdir ~/Documents/workspace
 else
 	echo "[INFO] already created workspace directory"
