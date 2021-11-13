@@ -3,6 +3,7 @@
 ## Step.1
 
 install `Karabiner-Elements`
+(or if installed through dotfiles, just open `Karabiner-Elements`)
 
 ## Step.2
 
