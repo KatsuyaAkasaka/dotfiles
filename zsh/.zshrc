@@ -87,6 +87,7 @@ alias up='cd ..'
 alias cwo='cd ~/Documents/workspace'
 alias cmi='cd ~/Documents/workspace/miami'
 alias cco='cd ~/Documents/workspace/cocolocala'
+alias cb='cd ~/Documents/workspace/bluage/bluage'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
@@ -108,6 +109,7 @@ alias npml='npm run lint'
 alias npmd='npm run dev'
 alias npmb='npm run build'
 alias gip='curl -XGET httpbin.org/ip | jq .origin'
+alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f '/Users/sakas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/path.zsh.inc';
