@@ -3,6 +3,9 @@
 # Update Homebrew recipes
 brew update-reset && brew update
 
+# Install Rosetta
+sudo softwareupdate --install-rosetta
+
 # Install zsh
 rm $HOME/.Brewfile
 ln -s $HOME/dotfiles/zsh/Brewfile $HOME/.Brewfile
