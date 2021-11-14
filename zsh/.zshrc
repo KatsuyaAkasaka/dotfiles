@@ -4,7 +4,6 @@ autoload -U promptinit; promptinit
 export LANG="ja_JP.UTF-8"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
-export RBPATH="$HOME/.rbenv/bin"
 export PYPATH="$HOME/.pyenv/bin"
 export GOENV_ROOT="$HOME/.goenv"
 export GOPATH="$HOME/go"
@@ -16,7 +15,6 @@ export GCLOUDPATH="$HOME/google-cloud-sdk"
 export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
 export PATH="$PGDATA:$GCLOUDPATH/bin:$RBPATH:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
-eval "$(rbenv init - zsh)"
 
 #setup node
 export NODENV_ROOT="$HOME/.nodenv"
