@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # 必ずホームディレクトリ上で実行すること!!
-cd ~
+cd $HOME
 
 # homebrewのインストール
 if ! which brew > /dev/null 2>&1; then
@@ -26,7 +26,7 @@ else
 fi
 
 # dotfilesのclone
-if ! -e ~/dotfiles > /dev/null 2>&1; then
+if ! -e $HOME/dotfiles > /dev/null 2>&1; then
 	echo "Clone dotfiles"
 	git clone https://github.com/KatsuyaAkasaka/dotfiles
 else
@@ -34,8 +34,8 @@ else
 fi
 
 # workspace作成
-if ! -e ~/Documents/workspace > /dev/null 2>&1; then
-	mkdir ~/Documents/workspace
+if ! -e $HOME/Documents/workspace > /dev/null 2>&1; then
+	mkdir $HOME/Documents/workspace
 else
 	echo "[INFO] already created workspace directory"
 fi

@@ -39,16 +39,16 @@ if ! which zplug > /dev/null 2>&1; then
 fi
 
 echo "installing envs"
-git clone https://github.com/syndbg/goenv.git ~/.goenv
+git clone https://github.com/syndbg/goenv.git $HOME/.goenv
 
-git clone git://github.com/nodenv/nodenv.git ~/.nodenv
-cd ~/.nodenv && src/configure && make -C src
+git clone git://github.com/nodenv/nodenv.git $HOME/.nodenv
+cd $HOME/.nodenv && src/configure && make -C src
 mkdir -p "$(nodenv root)"/plugins
 git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-cd ~/.pyenv && src/configure && make -C src
+git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+cd $HOME/.pyenv && src/configure && make -C src
 
 echo "done!"
 
@@ -68,4 +68,9 @@ echo "done!"
 echo "vscode vim enable to repeating..."
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
 defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
+echo "done!"
+
+echo "installing npm..."
+npm i -g yarn
+$HOME/.nodenv/bin/nodenv rehash
 echo "done!"
