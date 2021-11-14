@@ -30,8 +30,8 @@ brew "docker-compose"
 brew "mongodb-community"
 brew "java"
 brew "graphviz"
-brew "ngrok"
 
+cask "ngrok"
 cask "alfred"
 cask "docker"
 cask "google-chrome"
@@ -46,8 +46,8 @@ cask "google-cloud-sdk"
 cask "miro"
 cask "discord"
 cask "itsycal"
-cask "bear"
 cask "gyazo"
+cask "bloomrpc"
 
 mas "Yoink", id: 457622435
 mas "LINE", id: 539883307
