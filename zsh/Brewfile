@@ -31,6 +31,8 @@ brew "mongodb-community"
 brew "java"
 brew "graphviz"
 brew "k9s"
+brew "ngrok"
+brew "clang-format"
 
 cask "ngrok"
 cask "alfred"
