@@ -32,6 +32,8 @@ brew "java"
 brew "graphviz"
 brew "k9s"
 brew "watch"
+brew "ngrok"
+brew "clang-format"
 
 cask "ngrok"
 cask "alfred"
