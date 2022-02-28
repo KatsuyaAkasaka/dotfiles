@@ -7,6 +7,7 @@ export TERM="xterm-256color"
 export PYPATH="$HOME/.pyenv/bin"
 export GOENV_ROOT="$HOME/.goenv"
 export GOPATH="$HOME/go"
+export GOROOT="/opt/homebrew/Cellar/go/1.17.2/libexec"
 export GOPROXY="https://proxy.golang.org"
 export GO111MODULE="on"
 export PYENV_ROOT="$HOME/.pyenv"
@@ -89,7 +90,6 @@ alias cb='cd ~/Documents/workspace/bluage/bluage'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
-alias vim='nvim'
 alias gc='git commit -m'
 alias gca='git commit --amend'
 alias gp='git push'
@@ -108,6 +108,7 @@ alias npmd='npm run dev'
 alias npmb='npm run build'
 alias gip='curl -XGET httpbin.org/ip | jq .origin'
 alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
+alias gdel=git branch --merged master|egrep -v '\*|develop|master'|xargs git branch -d
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f '/Users/sakas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/path.zsh.inc';
@@ -151,20 +152,9 @@ set termguicolors
 # let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 # let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-# fbr - checkout git branch
-# fbr() {
-#   local branches branch
-#   branches=$(git branch -vv) &&
-#   branch=$(echo "$branches" | fzf +m) &&
-#   git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-# }
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
-  local branches branch
-  branches=$(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "CHECKOUT BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
 }
 
 
@@ -190,11 +180,22 @@ fd() {
 
 fadd() {
 	local selected
-	selected=$(unbuffer git status --short | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color"  | awk '{print $2}')
+	selected=$(unbuffer git status --short | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" --preview-window up | awk '{print $2}')
 		if [[ -n "$selected" ]]; then
 			selected=$(tr '\n' ' ' <<< "$selected")
 			for s in ${=selected}; do
 				git add $s
+			done
+		fi
+}
+
+fres() {
+	local selected
+	selected=$(unbuffer git status --short | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" --preview-window up | awk '{print $2}')
+		if [[ -n "$selected" ]]; then
+			selected=$(tr '\n' ' ' <<< "$selected")
+			for s in ${=selected}; do
+				git reset $s
 			done
 		fi
 }
@@ -205,11 +206,25 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOENV_DISABLE_GOPATH=1
 
 # fh - repeat history
-fh() {
-  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+function fh() {
+  local tac
+
+  if which tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+
+  BUFFER=$(history -n 1 | eval $tac | fzf --query "$LBUFFER")
+  CURSOR=$#BUFFER
+
+  zle reset-prompt
 }
 
-# c - browse chrome history
+zle -N fh
+bindkey '^r' fh
+
+# fch - browse chrome history
 fch() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
@@ -235,3 +250,5 @@ if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh
 
 # The next line enables shell command completion for gcloud.
 if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
+
+export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
