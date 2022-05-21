@@ -39,15 +39,18 @@ if ! which zplug > /dev/null 2>&1; then
 fi
 
 echo "installing envs"
-git clone https://github.com/syndbg/goenv.git $HOME/.goenv
+rm -rf $HOME/.goenv
+git clone git@github.com:syndbg/goenv.git $HOME/.goenv
 
-git clone git://github.com/nodenv/nodenv.git $HOME/.nodenv
+rm -rf $HOME/.nodenv
+git clone git@github.com:nodenv/nodenv.git $HOME/.nodenv
 cd $HOME/.nodenv && src/configure && make -C src
 mkdir -p "$(nodenv root)"/plugins
-git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
-git clone https://github.com/nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+git clone git@github.com:nodenv/node-build.git "$(nodenv root)"/plugins/node-build
+git clone git@github.com:nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
 
-git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+rm -rf $HOME/.pyenv
+git clone git@github.com:pyenv/pyenv.git $HOME/.pyenv
 cd $HOME/.pyenv && src/configure && make -C src
 
 echo "done!"
@@ -63,14 +66,4 @@ PURE=$HOME/.zplug/repos/sindresorhus/pure
 rm $PURE/pure.plugin.zsh
 
 ln -s $HOME/dotfiles/zsh/pure.plugin.zsh $PURE/pure.plugin.zsh
-echo "done!"
-
-echo "vscode vim enable to repeating..."
-defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
-defaults write com.microsoft.VSCodeInsiders ApplePressAndHoldEnabled -bool false # For VS Code Insider
-echo "done!"
-
-echo "installing npm..."
-npm i -g yarn
-$HOME/.nodenv/bin/nodenv rehash
 echo "done!"

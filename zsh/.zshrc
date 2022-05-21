@@ -5,11 +5,11 @@ export LANG="ja_JP.UTF-8"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export PYPATH="$HOME/.pyenv/bin"
-export GOENV_ROOT="$HOME/.goenv"
 export GOPATH="$HOME/go"
-export GOPROXY="https://proxy.golang.org"
-export GO111MODULE="on"
+export GOENV_ROOT="$HOME/.goenv"
+export NODENV_ROOT="$HOME/.nodenv"
 export PYENV_ROOT="$HOME/.pyenv"
+export GOPROXY="https://proxy.golang.org"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
 export PGDATA='/usr/local/var/postgres'
@@ -17,8 +17,8 @@ export VIMRUNTIME="~/.vim"
 export PATH="$PGDATA:$GCLOUDPATH/bin:$RBPATH:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 
 #setup node
-export NODENV_ROOT="$HOME/.nodenv"
 PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
+eval "$(nodenv init -)"
 
 # setup python
 PATH="$PYENV_ROOT/bin:$PATH"
@@ -110,11 +110,11 @@ alias gip='curl -XGET httpbin.org/ip | jq .origin'
 alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 
 # The next line updates PATH for the Google Cloud SDK
-if [ -f '/Users/sakas/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/path.zsh.inc';
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc";
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/sakas/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/sakas/google-cloud-sdk/completion.zsh.inc';
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc";
 fi
 
 function readlink() {
@@ -228,6 +228,17 @@ fch() {
      from urls order by last_visit_time desc" |
   awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+
+routine() {
+  softwareupdate --all --install --force
+  gcloud components update
+  brew update
+  brew upgrade
+  brew upgrade --cask --greedy
+  cd ~/.goenv && git pull origin master
+  cd ~/.nodenv && git pull origin master
+  cd ~/.pyenv && git pull origin master
 }
 
 # The next line updates PATH for the Google Cloud SDK.
