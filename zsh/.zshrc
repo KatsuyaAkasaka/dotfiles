@@ -200,6 +200,18 @@ fres() {
 		fi
 }
 
+fco() {
+	local selected
+	selected=$(unbuffer git status --short | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" --preview-window up | awk '{print $2}')
+		if [[ -n "$selected" ]]; then
+			selected=$(tr '\n' ' ' <<< "$selected")
+			for s in ${=selected}; do
+				git checkout $s
+			done
+		fi
+}
+
+
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
@@ -252,3 +264,15 @@ if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh
 if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
 
 export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
+
+kfilter() {
+    cat - | yq r - -d "*" -j | \
+        jq ".[] | select(.kind | match(\"$1\";\"i\")) | select(.metadata.name==\"$2\")" \
+        | jq . -s | yq r -
+}
+
+#nt
+nts() {
+  id=$(nt todo l --id=true | fzf | awk -F'[:]' '{print $2}'| xargs echo| sed 's/ //')
+  nt todo s $id
+}
