@@ -6,27 +6,28 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export PYPATH="$HOME/.pyenv/bin"
 export GOPATH="$HOME/go"
-export GOENV_ROOT="$HOME/.goenv"
-export NODENV_ROOT="$HOME/.nodenv"
-export PYENV_ROOT="$HOME/.pyenv"
 export GOPROXY="https://proxy.golang.org"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
-export PGDATA='/usr/local/var/postgres'
 export VIMRUNTIME="~/.vim"
-export PATH="$PGDATA:$GCLOUDPATH/bin:$RBPATH:$GOPATH/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
+export PATH="$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
 
 #setup node
-PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
+export NODENV_ROOT="$HOME/.nodenv"
+export PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
 eval "$(nodenv init -)"
 
 # setup python
-PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 #setup golang
-PATH="$GOENV_ROOT/bin::$PATH"
-eval "$(goenv init - zsh)"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 # zsh setting
 autoload -Uz compinit && compinit  # 補完
@@ -272,8 +273,6 @@ if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh
 
 # The next line enables shell command completion for gcloud.
 if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
-
-export GOPATH="$HOME/go"; export GOROOT="$HOME/.go"; export PATH="$GOPATH/bin:$PATH"; # g-install: do NOT edit, see https://github.com/stefanmaric/g
 
 kfilter() {
     cat - | yq r - -d "*" -j | \

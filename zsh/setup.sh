@@ -41,6 +41,8 @@ fi
 echo "installing envs"
 rm -rf $HOME/.goenv
 git clone git@github.com:syndbg/goenv.git $HOME/.goenv
+goenv install 1.18.2
+goenv global 1.18.2
 
 rm -rf $HOME/.nodenv
 git clone git@github.com:nodenv/nodenv.git $HOME/.nodenv
@@ -48,6 +50,8 @@ cd $HOME/.nodenv && src/configure && make -C src
 mkdir -p "$(nodenv root)"/plugins
 git clone git@github.com:nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 git clone git@github.com:nodenv/nodenv-update.git "$(nodenv root)"/plugins/nodenv-update
+nodenv install 16.1.0
+nodenv global 16.1.0
 
 rm -rf $HOME/.pyenv
 git clone git@github.com:pyenv/pyenv.git $HOME/.pyenv
