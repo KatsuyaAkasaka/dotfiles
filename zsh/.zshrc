@@ -262,9 +262,9 @@ routine() {
   brew update
   brew upgrade
   brew upgrade --cask --greedy
-  cd ~/.goenv && git pull origin master
-  cd ~/.nodenv && git pull origin master
-  cd ~/.pyenv && git pull origin master
+  git -C ~/.goenv pull origin master
+  git -C ~/.nodenv pull origin master
+  git -C ~/.pyenv pull origin master
 }
 
 # The next line updates PATH for the Google Cloud SDK.
