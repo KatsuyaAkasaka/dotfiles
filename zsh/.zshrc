@@ -258,7 +258,6 @@ fch() {
 }
 
 routine() {
-  softwareupdate --all --install --force
   gcloud components update
   brew update
   brew upgrade
