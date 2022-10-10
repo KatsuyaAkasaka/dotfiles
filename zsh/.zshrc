@@ -4,9 +4,6 @@ autoload -U promptinit; promptinit
 export LANG="ja_JP.UTF-8"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
-export PYPATH="$HOME/.pyenv/bin"
-export GOPATH="$HOME/go"
-export GOPROXY="https://proxy.golang.org"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
 export VIMRUNTIME="~/.vim"
@@ -14,20 +11,23 @@ export PATH="$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/
 
 #setup node
 export NODENV_ROOT="$HOME/.nodenv"
-export PATH="$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
+export PATH="$PATH:$NODENV_ROOT/bin:$NODENV_ROOT/shims"
+export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
 eval "$(nodenv init -)"
 
 # setup python
+export PYPATH="$HOME/.pyenv/bin"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PATH:$PYENV_ROOT/bin"
 eval "$(pyenv init --path)"
 
 #setup golang
+export GOPATH="$HOME/go"
+export GOPROXY="https://proxy.golang.org"
 export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$GOENV_ROOT/bin"
+export GOENV_DISABLE_GOPATH=1
 eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
 
 # zsh setting
 autoload -Uz compinit && compinit  # 補完
@@ -84,8 +84,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cwo='cd ~/Documents/workspace'
-alias cmi='cd ~/Documents/workspace/miami'
-alias cco='cd ~/Documents/workspace/cocolocala'
+alias cmi='cd ~/Documents/workspace/mixi/kangaroo-svc-api'
 alias cb='cd ~/Documents/workspace/bluage/bluage'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
@@ -109,6 +108,7 @@ alias npmb='npm run build'
 alias gip='curl -XGET httpbin.org/ip | jq .origin'
 alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 alias gdel=git branch --merged master|egrep -v '\*|develop|master'|xargs git branch -d
+alias rm='trash-put'
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc";
@@ -213,10 +213,6 @@ fco() {
 
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export GOENV_DISABLE_GOPATH=1
-
 # fh - repeat history
 function fh() {
   local tac

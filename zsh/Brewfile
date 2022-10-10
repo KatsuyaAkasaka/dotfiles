@@ -34,6 +34,7 @@ brew "k9s"
 brew "watch"
 brew "ngrok"
 brew "clang-format"
+brew "trash-cli"
 
 cask "ngrok"
 cask "alfred"
