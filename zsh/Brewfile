@@ -37,7 +37,7 @@ brew "clang-format"
 brew "trash-cli"
 
 cask "ngrok"
-cask "alfred"
+cask "raycast"
 cask "docker"
 cask "google-chrome"
 cask "slack"
