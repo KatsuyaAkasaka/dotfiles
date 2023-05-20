@@ -84,8 +84,8 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cwo='cd ~/Documents/workspace'
-alias cmi='cd ~/Documents/workspace/mixi/kangaroo-svc-api'
 alias cb='cd ~/Documents/workspace/bluage/bluage'
+alias cr='cd ~/Documents/workspace/replive'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
@@ -261,6 +261,8 @@ routine() {
   brew upgrade --cask --greedy
   git -C ~/.goenv pull origin master
   git -C ~/.nodenv pull origin master
+  git -C ~/.nodenv/plugins/node-build pull origin master
+  git -C ~/.nodenv/plugins/nodenv-update pull origin master
   git -C ~/.pyenv pull origin master
 }
 
