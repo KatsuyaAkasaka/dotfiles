@@ -16,8 +16,6 @@ if ! which brew > /dev/null 2>&1; then
 else
 	echo "[INFO] already intalled homebrew"
 fi
-# arm用pathを通しておく
-export PATH="$PATH:/opt/homebrew/bin" >> ~/.zshrc
 
 # gitのインストール
 if ! which git > /dev/null 2>&1; then
