@@ -17,6 +17,12 @@ curl https://raw.githubusercontent.com/KatsuyaAkasaka/dotfiles/master/setup.sh >
 ```
 
 ## Step.2
+update zshrc to path
+```
+source ~/.zshrc
+```
+
+## Step.3
 
 check successfuly cloned this repo and do this
 
@@ -24,7 +30,7 @@ check successfuly cloned this repo and do this
 cd dotfiles
 ```
 
-## Step.3
+## Step.4
 
 sign in to app store and just do this
 
@@ -32,7 +38,7 @@ sign in to app store and just do this
 sh installer.sh
 ```
 
-## Step.4
+## Step.5
 
 your machine setup is totally finished!
 see bellow
@@ -44,7 +50,7 @@ see bellow
 
 🎉🎉🎉
 
-## Step.5
+## Step.6
 
 if you want to setup more, check `./app/`
 app list
