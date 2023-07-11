@@ -34,8 +34,12 @@ fi
 ln -s $HOME/dotfiles/zsh/.zshrc $HOME/.zshrc
 
 if ! which zplug > /dev/null 2>&1; then
+  # https://github.com/zplug/installer
   echo "download zplug"
+  sudo mkdir -p /usr/local/opt
+  sudo chmod 777 /usr/local/opt/zplug
   curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  source /usr/local/opt/zplug/init.zsh
 fi
 
 echo "installing envs"
@@ -65,7 +69,6 @@ source $HOME/.zshrc
 echo "done!"
 
 echo "changing terminal theme..."
-export ZPLUG_HOME=/usr/local/opt/zplug
 PURE=$HOME/.zplug/repos/sindresorhus/pure
 rm $PURE/pure.plugin.zsh
 

@@ -119,6 +119,11 @@ fi
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc";
 fi
 
+function hankyo() {
+	TEXT=$1
+  echo $TEXT | nkf | pbcopy
+}
+
 function readlink() {
 	TARGET_FILE=$1
 
