@@ -11,22 +11,22 @@ export PATH="$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/
 
 #setup node
 export NODENV_ROOT="$HOME/.nodenv"
-export PATH="$PATH:$NODENV_ROOT/bin:$NODENV_ROOT/shims"
-export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin"
+export PATH=":$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 eval "$(nodenv init -)"
 
 # setup python
 export PYPATH="$HOME/.pyenv/bin"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PATH:$PYENV_ROOT/bin"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 #setup golang
 export GOPATH="$HOME/go"
 export GOPROXY="https://proxy.golang.org"
 export GOENV_ROOT="$HOME/.goenv"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin:$GOENV_ROOT/bin"
-export GOENV_DISABLE_GOPATH=1
+export PATH="$GOENV_ROOT/bin:$GOROOT/bin:$PATH"
+export GOENV_DISABLE_GOPATH=0
 eval "$(goenv init -)"
 
 # zsh setting
@@ -90,7 +90,7 @@ alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
 alias gc='git commit -m'
-alias gca='git commit --amend'
+alias gca='git commit --amend --no-edit'
 alias gp='git push'
 alias gm='git checkout main || git checkout master && git pull'
 alias gpf='git push -f'
@@ -160,7 +160,7 @@ set termguicolors
 
 # fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
-  git checkout $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "CHECKOUT BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
+  git checkout -f $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "CHECKOUT BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
 }
 
 
@@ -288,3 +288,6 @@ nts() {
   id=$(nt todo l --id=true | fzf | awk -F'[:]' '{print $2}'| xargs echo| sed 's/ //')
   nt todo s $id
 }
+
+# Added by Windsurf
+export PATH="/Users/akasakakatsuya/.codeium/windsurf/bin:$PATH"
