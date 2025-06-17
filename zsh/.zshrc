@@ -13,6 +13,9 @@ export PATH="$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/
 export NODENV_ROOT="$HOME/.nodenv"
 export PATH=":$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export GIT_WORKTREE_DIR="${HOME}/.gitworktree"
+
 eval "$(nodenv init -)"
 
 # setup python
@@ -92,9 +95,10 @@ alias cd='cdls'
 alias gc='git commit -m'
 alias gca='git commit --amend --no-edit'
 alias gp='git push'
-alias gm='git checkout main || git checkout master && git pull'
+alias gm='git switch main || git switch master && git pull'
 alias gpf='git push -f'
 alias gb='git branch -avv'
+alias gr='dirname "$(git rev-parse --git-common-dir 2>/dev/null)"' # 現在のディレクトリのgitルートディレクトリを取得
 alias cpath='pwd | pbcopy'
 alias d='docker'
 alias dc='docker-compose'
@@ -158,9 +162,9 @@ set termguicolors
 # let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 # let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-# fbr - checkout git branch (including remote branches), sorted by most recent commit, limit 30 last branches
+# fbr - switch git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
-  git checkout -f $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "CHECKOUT BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
+  git switch -f $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "SWITCH BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
 }
 
 
@@ -212,7 +216,7 @@ fco() {
 		if [[ -n "$selected" ]]; then
 			selected=$(tr '\n' ' ' <<< "$selected")
 			for s in ${=selected}; do
-				git checkout $s
+				git switch $s
 			done
 		fi
 }
@@ -287,6 +291,32 @@ kfilter() {
 nts() {
   id=$(nt todo l --id=true | fzf | awk -F'[:]' '{print $2}'| xargs echo| sed 's/ //')
   nt todo s $id
+}
+
+wadd() {
+  git worktree add $(gr)/.gitworktree/$1 -b $1
+}
+
+wsw() {
+  cd $(gr)/.gitworktree/$1
+}
+
+wbr() {
+  # 出力行の一行目をトリミング
+  # selected=$(git worktree list | sed '1d' | sed -n 's/.*\[\(.*\)\]/\1/p' | fzf --height 70% --prompt "SWITCH WORKTREE>")
+  selected=$(git worktree list | sed -n 's/.*\[\(.*\)\]/\1/p' | fzf --height 70% --prompt "SWITCH WORKTREE>")
+  # selected=$(git worktree list | sed '1d' | fzf --height 70% --prompt "SWITCH WORKTREE>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g" | sed -n 's/.*\[\(.*\)\]/\1/p')
+
+  # selectedがmainかmasterであればルートディレクトリ二移動
+  if [ "$selected" = "main" ] || [ "$selected" = "master" ]; then
+    cd $(gr)
+  else
+    cd $(gr)/.gitworktree/$selected
+  fi
+}
+
+wrm() {
+  git worktree remove $(gr)/.gitworktree/$1
 }
 
 # Added by Windsurf
