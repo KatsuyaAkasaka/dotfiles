@@ -87,8 +87,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cwo='cd ~/Documents/workspace'
-alias cb='cd ~/Documents/workspace/bluage/bluage'
-alias cr='cd ~/Documents/workspace/replive'
+alias ck='cd ~/Documents/workspace/bluage/canary-cloud-kanri'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
@@ -164,7 +163,13 @@ set termguicolors
 
 # fbr - switch git branch (including remote branches), sorted by most recent commit, limit 30 last branches
 fbr() {
-  git switch -f $(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "SWITCH BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
+  # もし現在いるworktreeと異なる名前のブランチへswitchするばあいはエラーをだす
+  selected_branch=$(git for-each-ref --sort=-committerdate refs/heads/ --format="%(refname:short)" | tr -d " " | fzf --height 70% --prompt "SWITCH BRANCH>" --preview "git log -p --color=always {}" --preview-window up | head -n 1 | sed -e "s/^\*\s*//g" | perl -pe "s/remotes\/origin\///g")
+  if [ "$(git rev-parse --abbrev-ref HEAD)" != "$selected_branch" ]; then
+    echo "エラー: 現在いるworktreeと異なる名前のブランチへswitchすることはできません。"
+    return 1
+  fi
+  git switch -f $selected_branch
 }
 
 
@@ -294,7 +299,8 @@ nts() {
 }
 
 wadd() {
-  git worktree add $(gr)/.gitworktree/$1 -b $1
+  git worktree add $(gr)/.gitworktree/$1 -b $1 && \
+  cd $(gr)/.gitworktree/$1 && \
 }
 
 wsw() {
@@ -315,8 +321,13 @@ wbr() {
   fi
 }
 
-wrm() {
-  git worktree remove $(gr)/.gitworktree/$1
+wp() {
+  cd $(gr)
+  # $(gr)/.gitworktreeのディレクトリごとにpruneとrm -rfを実行
+  for dir in $(gr)/.gitworktree/*; do
+    git worktree remove -f $dir
+    rm -rf $dir
+  done
 }
 
 # Added by Windsurf
