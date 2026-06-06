@@ -329,6 +329,3 @@ wp() {
     rm -rf $dir
   done
 }
-
-# Added by Windsurf
-export PATH="/Users/akasakakatsuya/.codeium/windsurf/bin:$PATH"
