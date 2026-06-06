@@ -37,22 +37,19 @@ brew "trash-cli"
 brew "nkf"
 
 cask "ngrok"
-cask "raycast"
 cask "docker"
 cask "google-chrome"
 cask "slack"
 cask "karabiner-elements"
 cask "iterm2"
-cask "visual-studio-code"
+cask "cursor"
 cask "insomnia"
 cask "zoom"
 cask "google-japanese-ime"
 cask "google-cloud-sdk"
-cask "miro"
 cask "discord"
 cask "itsycal"
 cask "gyazo"
-cask "bloomrpc"
 
 mas "Yoink", id: 457622435
 mas "LINE", id: 539883307
