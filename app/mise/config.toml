@@ -18,6 +18,7 @@ vim = "latest"
 mas = "latest"
 docker-compose = "latest"
 gh = "latest"
+gitleaks = "latest"
 
 [env]
 NODE_ENV = 'development'
