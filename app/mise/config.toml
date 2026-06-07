@@ -24,6 +24,7 @@ vim = "latest"
 mas = "latest"
 docker-compose = "latest"
 gh = "latest"
+gcloud = "latest"
 gitleaks = "latest"
 betterleaks = "latest"
 
