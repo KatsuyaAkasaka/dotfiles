@@ -9,6 +9,8 @@ echo "Setting zsh..."
 $DOT_DIRECTORY/zsh/setup.sh
 echo "Setting mise..."
 $DOT_DIRECTORY/app/mise/setup.sh
+echo "Setting git..."
+$DOT_DIRECTORY/app/git/setup.sh
 
 echo "vscode vim enable to repeating..."
 defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false         # For VS Code
