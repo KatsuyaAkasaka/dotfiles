@@ -5,12 +5,12 @@ export LANG="ja_JP.UTF-8"
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export MYVIMRC="$HOME/.vimrc"
-export GCLOUDPATH="$HOME/google-cloud-sdk"
 export GOPATH="$HOME/go"
 export VIMRUNTIME="~/.vim"
-# PATH は順序考慮してここで一括設定(優先度: go/yarn > homebrew > gcloud > system > flutter/local)
+# PATH は順序考慮してここで一括設定(優先度: go/yarn > homebrew > system > flutter/local)
+# gcloud は mise 管理に移行(下部の mise activate 後で path/completion を読み込む)
 # mise の shims は `mise activate`(後述)が最終的に先頭へ追加する
-export PATH="$GOPATH/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin"
+export PATH="$GOPATH/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin"
 
 # setup node (node 本体は mise で管理。yarn 系の PATH は上部に集約)
 
@@ -101,13 +101,7 @@ alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 alias gdel=git branch --merged master|egrep -v '\*|develop|master'|xargs git branch -d
 alias rm='trash'
 
-# The next line updates PATH for the Google Cloud SDK
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc";
-fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc";
-fi
+# gcloud の path/completion は mise 管理に移行したため、ファイル末尾(mise activate 後)で読み込む
 
 function hankyo() {
 	TEXT=$1
@@ -255,12 +249,41 @@ fch() {
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
 }
 
+# 各種パッケージマネージャを一括アップデートするルーチン
+# 1つのステップが失敗しても止まらず最後まで走り、結果サマリを表示する
 routine() {
-  gcloud components update
-  brew update
-  brew upgrade
-  brew upgrade --cask --greedy
-  mise upgrade
+  local -a steps=(
+    "gcloud:gcloud components update --quiet"
+    "brew update:brew update"
+    "brew upgrade:brew upgrade"
+    "brew cask:brew upgrade --cask --greedy"
+    "brew cleanup:brew cleanup -s"
+    "mise:mise upgrade"          # config.toml の minimum_release_age=7d により7日未満のリリースは除外される
+    "zplug:zplug update"
+  )
+  local -a failed=()
+  local step name cmd
+  for step in "${steps[@]}"; do
+    name="${step%%:*}"
+    cmd="${step#*:}"
+    print -P "%F{cyan}==> ${name}%f"
+    # コマンドが見つからない場合はスキップ(全環境に全ツールがあるとは限らない)
+    if ! command -v "${cmd%% *}" >/dev/null 2>&1; then
+      print -P "%F{yellow}    (skip: ${cmd%% *} not found)%f"
+      continue
+    fi
+    if ! eval "$cmd"; then
+      failed+=("$name")
+      print -P "%F{red}    !! ${name} failed%f"
+    fi
+  done
+
+  print -P "\n%F{cyan}==> routine done%f"
+  if (( ${#failed} )); then
+    print -P "%F{red}failed: ${(j:, :)failed}%f"
+    return 1
+  fi
+  print -P "%F{green}all updates succeeded%f"
 }
 
 # brew install/uninstall/tap を ~/.Brewfile に自動反映する
@@ -278,12 +301,6 @@ brew() {
   fi
   return $ret
 }
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '~/google-cloud-sdk/path.zsh.inc' ]; then . '~/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '~/google-cloud-sdk/completion.zsh.inc' ]; then . '~/google-cloud-sdk/completion.zsh.inc'; fi
 
 kfilter() {
     cat - | yq r - -d "*" -j | \
@@ -331,6 +348,14 @@ wp() {
 
 # mise (Claude Code などのツールを PATH に通す。shims は activate が PATH 先頭へ追加する)
 eval "$(mise activate zsh)"
+
+# gcloud (mise 管理)。バージョン非依存に mise where で実体を解決し、PATH と補完を読み込む
+GCLOUD_HOME="$(mise where gcloud 2>/dev/null)"
+if [ -n "$GCLOUD_HOME" ]; then
+  [ -f "$GCLOUD_HOME/path.zsh.inc" ] && . "$GCLOUD_HOME/path.zsh.inc"
+  [ -f "$GCLOUD_HOME/completion.zsh.inc" ] && . "$GCLOUD_HOME/completion.zsh.inc"
+fi
+unset GCLOUD_HOME
 
 # direnv フック(mise が direnv を PATH に通した後に実行する)
 eval "$(direnv hook zsh)"
