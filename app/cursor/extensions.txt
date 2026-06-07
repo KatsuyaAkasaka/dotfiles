@@ -1,0 +1,12 @@
+anthropic.claude-code
+anysphere.remote-ssh
+eamodio.gitlens
+esbenp.prettier-vscode
+github.vscode-github-actions
+golang.go
+marp-team.marp-vscode
+ms-azuretools.vscode-docker
+ms-ceintl.vscode-language-pack-ja
+ms-vsliveshare.vsliveshare
+redhat.vscode-yaml
+vscodevim.vim

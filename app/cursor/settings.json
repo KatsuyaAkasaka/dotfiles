@@ -1,0 +1,199 @@
+{
+  "workbench.startupEditor": "newUntitledFile",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "vim.leader": "<space>",
+  "vim.useSystemClipboard": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "workbench.list.keyboardNavigation": "simple",
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.maxLineCount": 5,
+  "workbench.editor.enablePreview": false,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["x"],
+      "after": ["\"", "_", "x"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["p"],
+      "after": ["\"", "_", "d", "P"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["s"],
+      "after": ["<Nop>"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": [":split"]
+    },
+    {
+      "before": ["<leader>", "v"],
+      "commands": [":vsplit"]
+    },
+    {
+      "before": ["<leader>", "s"],
+      "commands": [":w"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": [":wq"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": [":q!"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "after": ["g", "t"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "after": ["g", "T"]
+    }
+  ],
+  "vim.handleKeys": {
+    "s": false
+  },
+  "sync.gist": "9c68e90746023df3b171378860cc290e",
+  "breadcrumbs.enabled": true,
+  "editor.largeFileOptimizations": false,
+  "[sql]": {
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "tsdk": "./node_modules/typescript/lib"
+  },
+  "go.formatTool": "gofmt",
+  "go.useLanguageServer": true,
+  "gopls": {
+    "ui.semanticTokens": true
+  },
+  "search.exclude": {
+    "**/.*.json": true,
+    "**/node_modules": true
+  },
+  "go.lintTool": "golangci-lint",
+  "go.lintOnSave": "file",
+  "[go]": {
+    "editor.tabSize": 8,
+    "editor.insertSpaces": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "eslint.migration.2_x": "off",
+  "extensions.ignoreRecommendations": true,
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "gitlens.views.repositories.avatars": false,
+  "go.toolsManagement.autoUpdate": true,
+  "gitlens.codeLens.enabled": false,
+  "gitlens.remotes": [
+    {
+      "domain": "ghe.ca-tools.org",
+      "type": "GitHub"
+    }
+  ],
+  "editor.cursorStyle": "line",
+  "editor.insertSpaces": false,
+  "editor.lineNumbers": "on",
+  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.wordWrap": "off",
+  "redhat.telemetry.enabled": true,
+  "gitlens.advanced.messages": {
+    "suppressGitMissingWarning": true
+  },
+  "[proto3]": {
+    "editor.defaultFormatter": "zxh404.vscode-proto3"
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.watcherExclude": {
+    "**/.goenv/**": true,
+    "**/*.gen.go": true,
+    "**/Library/**": true,
+    "**/Pictures/**": true
+  },
+  "files.exclude": {},
+  "git.openRepositoryInParentFolders": "always",
+  "workspaceExplorer.workspaceStorageDirectory": "/Users/akasakakatsuya/Documents/workspace/vscode_workspace",
+  "git.confirmSync": false,
+  "update.showReleaseNotes": false,
+  "[javascript][typescript]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "github.copilot.editor.enableAutoCompletions": true,
+  "editor.minimap.scale": 3,
+  "protoc": {
+    "editor.formatOnSave": false
+  },
+  "explorer.confirmDragAndDrop": false,
+  "markdown.marp.exportType": "pptx",
+  "workbench.iconTheme": "material-icon-theme",
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "explorer.confirmPasteNative": false,
+  "editor.accessibilitySupport": "on",
+  "window.autoDetectColorScheme": false,
+  "security.promptForLocalFileProtocolHandling": false,
+}
