@@ -9,7 +9,7 @@ sh setup.sh
 ## Step.2
 
 ```
-pbcopy < ~/.ssh/id_rsa_github.pub
+pbcopy < ~/.ssh/id_ed25519_github
 ```
 
 ## Step.3

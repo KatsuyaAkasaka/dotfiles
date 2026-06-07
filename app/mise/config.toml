@@ -1,0 +1,26 @@
+[tools]
+node = 'latest'
+go = 'latest'
+claude = "latest"
+cmake = "latest"
+jq = "latest"
+neovim = "latest"
+direnv = "latest"
+fzf = "latest"
+ripgrep = "latest"
+kubectx = "latest"
+kubectl = "latest"
+k9s = "latest"
+uv = "latest"
+java = "latest"
+"pipx:clang-format" = "latest"
+vim = "latest"
+mas = "latest"
+docker-compose = "latest"
+gh = "latest"
+
+[env]
+NODE_ENV = 'development'
+
+[tasks.dev]
+run = 'npm run dev'

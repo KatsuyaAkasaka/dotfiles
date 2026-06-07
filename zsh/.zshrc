@@ -6,31 +6,18 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export TERM="xterm-256color"
 export MYVIMRC="$HOME/.vimrc"
 export GCLOUDPATH="$HOME/google-cloud-sdk"
+export GOPATH="$HOME/go"
 export VIMRUNTIME="~/.vim"
-export PATH="$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin:/opt/homebrew/bin"
+# PATH は順序考慮してここで一括設定(優先度: go/yarn > homebrew > gcloud > system > flutter/local)
+# mise の shims は `mise activate`(後述)が最終的に先頭へ追加する
+export PATH="$GOPATH/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:/opt/homebrew/bin:/opt/homebrew/sbin:$GCLOUDPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/Documents/flutter/bin:$HOME/.local/bin"
 
-#setup node
-export NODENV_ROOT="$HOME/.nodenv"
-export PATH=":$NODENV_ROOT/bin:$NODENV_ROOT/shims:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# setup node (node 本体は mise で管理。yarn 系の PATH は上部に集約)
 
 export GIT_WORKTREE_DIR="${HOME}/.gitworktree"
 
-eval "$(nodenv init -)"
-
-# setup python
-export PYPATH="$HOME/.pyenv/bin"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
-#setup golang
-export GOPATH="$HOME/go"
+# setup golang (go 本体は mise で管理。GOPATH と $GOPATH/bin は上部に集約)
 export GOPROXY="https://proxy.golang.org"
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$GOROOT/bin:$PATH"
-export GOENV_DISABLE_GOPATH=0
-eval "$(goenv init -)"
 
 # zsh setting
 autoload -Uz compinit && compinit  # 補完
@@ -78,7 +65,7 @@ prompt pure
 
 # .direnv
 export EDITOR="vim"
-eval "$(direnv hook zsh)"
+# direnv フックは mise の有効化後(ファイル末尾)で実行する(direnv は mise 管理のため)
 
 # alias
 alias ls='ls -G'
@@ -87,7 +74,7 @@ alias la='ls -a'
 alias ll='ls -la'
 alias up='cd ..'
 alias cwo='cd ~/Documents/workspace'
-alias ck='cd ~/Documents/workspace/bluage/canary-cloud-kanri'
+alias ck='cd ~/Documents/workspace/canary/canary-cloud-kanri'
 alias mv='mv -i'
 alias cdr='cd-gitroot'
 alias cd='cdls'
@@ -112,7 +99,7 @@ alias npmb='npm run build'
 alias gip='curl -XGET httpbin.org/ip | jq .origin'
 alias tree='tree -a -I "\.DS_Store|\.git|node_modules|vendor\/bundle" -N'
 alias gdel=git branch --merged master|egrep -v '\*|develop|master'|xargs git branch -d
-alias rm='trash-put'
+alias rm='trash'
 
 # The next line updates PATH for the Google Cloud SDK
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc";
@@ -273,11 +260,23 @@ routine() {
   brew update
   brew upgrade
   brew upgrade --cask --greedy
-  git -C ~/.goenv pull origin master
-  git -C ~/.nodenv pull origin master
-  git -C ~/.nodenv/plugins/node-build pull origin master
-  git -C ~/.nodenv/plugins/nodenv-update pull origin master
-  git -C ~/.pyenv pull origin master
+  mise upgrade
+}
+
+# brew install/uninstall/tap を ~/.Brewfile に自動反映する
+# パッケージ構成を変える操作の後だけ Brewfile 全体を再生成する(--describe で各エントリに説明コメントを付与)
+brew() {
+  command brew "$@"
+  local ret=$?
+  # 構成変更コマンドが成功したときのみ dump する(typo 等での失敗時は再生成しない)
+  if [[ $ret -eq 0 ]]; then
+    case "$1" in
+      install|uninstall|remove|rm|tap|untap)
+        command brew bundle dump --global --force --describe
+        ;;
+    esac
+  fi
+  return $ret
 }
 
 # The next line updates PATH for the Google Cloud SDK.
@@ -329,3 +328,9 @@ wp() {
     rm -rf $dir
   done
 }
+
+# mise (Claude Code などのツールを PATH に通す。shims は activate が PATH 先頭へ追加する)
+eval "$(mise activate zsh)"
+
+# direnv フック(mise が direnv を PATH に通した後に実行する)
+eval "$(direnv hook zsh)"

@@ -1,56 +1,69 @@
-cask_args appdir: "/Applications"
-
-tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
-tap "mongodb/brew"
-
-brew "cmake"
-brew "gcc"
-brew "jq"
-brew "tig"
-brew "nmap"
-brew "pkg-config"
-brew "tree"
-brew "vim"
-brew "neovim"
-brew "direnv"
-brew "fzf"
-brew "zsh"
+# Program that can automate interactive applications
 brew "expect"
-brew "ripgrep"
-brew "pure"
-brew "mysql"
-brew "telnet"
-brew "kubectx"
-brew "kubectl"
-brew "docker-compose"
-brew "mongodb-community"
-brew "java"
+# GNU compiler collection
+brew "gcc"
+# Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-brew "k9s"
-brew "watch"
-brew "ngrok"
-brew "clang-format"
-brew "trash-cli"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Network Kanji code conversion Filter (NKF)
 brew "nkf"
-
-cask "ngrok"
-cask "docker"
-cask "google-chrome"
-cask "slack"
-cask "karabiner-elements"
-cask "iterm2"
-cask "cursor"
-cask "insomnia"
-cask "zoom"
-cask "google-japanese-ime"
-cask "google-cloud-sdk"
-cask "discord"
-cask "itsycal"
-cask "gyazo"
-
-mas "Yoink", id: 457622435
+# Port scanning utility for large networks
+brew "nmap"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Pretty, minimal and fast ZSH prompt
+brew "pure"
+# User interface to the TELNET protocol
+brew "telnet"
+# Text interface for Git repositories
+brew "tig"
+# Command-line interface to the freedesktop.org trashcan
+brew "trash-cli"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Executes a program periodically, showing output fullscreen
+brew "watch"
+# UNIX shell (command interpreter)
+brew "zsh"
+# Chromium based browser
+cask "arc"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Write, edit, and chat about your code with AI
+cask "cursor", args: { appdir: "/Applications" }
+# Voice and text chat software
+cask "discord", args: { appdir: "/Applications" }
+# App to build and share containerised applications and microservices
+cask "docker-desktop", args: { appdir: "/Applications" }
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli", args: { appdir: "/Applications" }
+# Web browser
+cask "google-chrome", args: { appdir: "/Applications" }
+# Japanese input software
+cask "google-japanese-ime", args: { appdir: "/Applications" }
+# Screenshot and screen recording tool
+cask "gyazo", args: { appdir: "/Applications" }
+# HTTP and GraphQL Client
+cask "insomnia", args: { appdir: "/Applications" }
+# Terminal emulator as alternative to Apple's Terminal app
+cask "iterm2", args: { appdir: "/Applications" }
+# Menu bar calendar
+cask "itsycal", args: { appdir: "/Applications" }
+# Keyboard customiser
+cask "karabiner-elements", args: { appdir: "/Applications" }
+# Reverse proxy, secure introspectable tunnels to localhost
+cask "ngrok", args: { appdir: "/Applications" }
+# Team communication and collaboration software
+cask "slack", args: { appdir: "/Applications" }
+# Video communication and virtual meeting platform
+cask "zoom", args: { appdir: "/Applications" }
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 361285480
 mas "LINE", id: 539883307
-
+mas "Numbers", id: 361304891
+mas "Pages", id: 361309726
+mas "Yoink", id: 457622435
+go "cmd/go"
+go "cmd/gofmt"
