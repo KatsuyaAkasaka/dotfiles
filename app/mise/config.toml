@@ -19,6 +19,7 @@ mas = "latest"
 docker-compose = "latest"
 gh = "latest"
 gitleaks = "latest"
+betterleaks = "latest"
 
 [env]
 NODE_ENV = 'development'

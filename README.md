@@ -54,3 +54,12 @@ see bellow
 
 if you want to setup more, check `./app/`
 app list
+
+## Step.7
+
+enable the betterleaks pre-commit hook for this repo
+(scans staged changes for secrets before each commit)
+
+```
+git config core.hooksPath .githooks
+```
