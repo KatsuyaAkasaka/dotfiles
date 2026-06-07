@@ -1,3 +1,9 @@
+[settings]
+# Supply-chain hardening: ignore versions released less than 7 days ago.
+# Applies to fuzzy requests like 'latest'; gives the community time to vet new releases.
+# Only backends exposing release timestamps honor this (aqua, cargo, npm, pipx, core plugins).
+minimum_release_age = "7d"
+
 [tools]
 node = 'latest'
 go = 'latest'
