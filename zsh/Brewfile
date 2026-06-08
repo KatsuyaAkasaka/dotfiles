@@ -26,6 +26,8 @@ brew "tree"
 brew "watch"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Speech-to-text system
+cask "aqua-voice"
 # Chromium based browser
 cask "arc"
 # Anthropic's official Claude AI desktop app
@@ -65,5 +67,17 @@ mas "LINE", id: 539883307
 mas "Numbers", id: 361304891
 mas "Pages", id: 361309726
 mas "Yoink", id: 457622435
+vscode "anthropic.claude-code"
+vscode "anysphere.remote-ssh"
+vscode "eamodio.gitlens"
+vscode "esbenp.prettier-vscode"
+vscode "github.vscode-github-actions"
+vscode "golang.go"
+vscode "marp-team.marp-vscode"
+vscode "ms-azuretools.vscode-containers"
+vscode "ms-azuretools.vscode-docker"
+vscode "ms-ceintl.vscode-language-pack-ja"
+vscode "redhat.vscode-yaml"
+vscode "vscodevim.vim"
 go "cmd/go"
 go "cmd/gofmt"
